@@ -13,6 +13,7 @@
 		5253F06A1AA8624E00C458E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5253F0691AA8624E00C458E3 /* Images.xcassets */; };
 		5253F06D1AA8624E00C458E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5253F06B1AA8624E00C458E3 /* LaunchScreen.xib */; };
 		5253F0791AA8624E00C458E3 /* FrietAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0781AA8624E00C458E3 /* FrietAppTests.swift */; };
+		CE9486381AAB2D7A005FFA24 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9486371AAB2D7A005FFA24 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		5253F0721AA8624E00C458E3 /* FrietAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrietAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5253F0771AA8624E00C458E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5253F0781AA8624E00C458E3 /* FrietAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrietAppTests.swift; sourceTree = "<group>"; };
+		CE9486371AAB2D7A005FFA24 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Users/user/Downloads/Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		5253F05F1AA8624E00C458E3 /* FrietApp */ = {
 			isa = PBXGroup;
 			children = (
+				CE9486371AAB2D7A005FFA24 /* Default-568h@2x.png */,
 				5253F0621AA8624E00C458E3 /* AppDelegate.swift */,
 				5253F0641AA8624E00C458E3 /* ViewController.swift */,
 				5253F0661AA8624E00C458E3 /* Main.storyboard */,
@@ -193,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5253F0681AA8624E00C458E3 /* Main.storyboard in Resources */,
+				CE9486381AAB2D7A005FFA24 /* Default-568h@2x.png in Resources */,
 				5253F06D1AA8624E00C458E3 /* LaunchScreen.xib in Resources */,
 				5253F06A1AA8624E00C458E3 /* Images.xcassets in Resources */,
 			);
@@ -409,6 +413,7 @@
 				5253F07E1AA8624E00C458E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5253F07F1AA8624E00C458E3 /* Build configuration list for PBXNativeTarget "FrietAppTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +422,7 @@
 				5253F0811AA8624E00C458E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
