@@ -223,7 +223,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="tDO-O2-EsB" kind="show" identifier="toGroupOrders" id="CY2-LD-zbu"/>
+                                            <segue destination="tDO-O2-EsB" kind="show" id="CY2-LD-zbu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -253,10 +253,10 @@
             </objects>
             <point key="canvasLocation" x="1805" y="409"/>
         </scene>
-        <!--Title-->
+        <!--View Controller-->
         <scene sceneID="SAb-zi-FUg">
             <objects>
-                <viewController id="tDO-O2-EsB" customClass="OrderListController" customModule="FrietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="tDO-O2-EsB" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7sF-0l-bLi"/>
                         <viewControllerLayoutGuide type="bottom" id="nb6-hW-XuQ"/>
@@ -266,10 +266,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="wgH-Je-7mQ"/>
-                    <connections>
-                        <outlet property="titleBarTitle" destination="wgH-Je-7mQ" id="7nq-jw-9gq"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSb-cz-14E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

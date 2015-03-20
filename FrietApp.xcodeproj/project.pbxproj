@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		521890C41ABC431700E79E42 /* NewGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890C31ABC431700E79E42 /* NewGroupController.swift */; };
 		521890C61ABC445200E79E42 /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890C51ABC445200E79E42 /* GroupController.swift */; };
+		521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890C71ABC4BFB00E79E42 /* OrderListController.swift */; };
 		5253F0631AA8624E00C458E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0621AA8624E00C458E3 /* AppDelegate.swift */; };
 		5253F0651AA8624E00C458E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0641AA8624E00C458E3 /* ViewController.swift */; };
 		5253F0681AA8624E00C458E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5253F0661AA8624E00C458E3 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		521890C31ABC431700E79E42 /* NewGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupController.swift; sourceTree = "<group>"; };
 		521890C51ABC445200E79E42 /* GroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
+		521890C71ABC4BFB00E79E42 /* OrderListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListController.swift; sourceTree = "<group>"; };
 		5253F05D1AA8624E00C458E3 /* FrietApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrietApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5253F0611AA8624E00C458E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5253F0621AA8624E00C458E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				5253F06B1AA8624E00C458E3 /* LaunchScreen.xib */,
 				5253F0601AA8624E00C458E3 /* Supporting Files */,
 				521890C51ABC445200E79E42 /* GroupController.swift */,
+				521890C71ABC4BFB00E79E42 /* OrderListController.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */,
 				5253F0651AA8624E00C458E3 /* ViewController.swift in Sources */,
 				521890C61ABC445200E79E42 /* GroupController.swift in Sources */,
 				521890C41ABC431700E79E42 /* NewGroupController.swift in Sources */,

@@ -33,12 +33,4 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
         cell.detailTextLabel?.text = numbers[indexPath.row]
         return cell
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "toGroupOrders"){
-            var cell = sender as UITableViewCell!
-            var secondController = segue.destinationViewController as OrderListController
-            secondController.receivedGroupname = cell.textLabel?.text
-        }
-    }
 }
