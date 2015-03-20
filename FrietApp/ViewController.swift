@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var usernameTextfield: UITextField!
-    @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,25 +22,25 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func register(sender: UIButton) {
+    
+    @IBAction func onTapMainView(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func inloggen(sender: UIButton) {
+        println("Evaluate: " + usernameField.text + " pass: " + passwordField.text)
+        var outcome = true
+        //Asynchroon
+        dealWithOutcome(outcome)
         
     }
     
-    func registerAttemptDone(outcome: Bool){
+    func dealWithOutcome(outcome: Bool){
         if(outcome){
-            self.performSegueWithIdentifier("register", sender: nil)
-        } else {
-            warningLabel.hidden = false
-            warningLabel.text = "Deze gebruikersnaam bestaat al!"
-            usernameTextfield.text = ""
+            self.performSegueWithIdentifier("toGroups", sender: self)
         }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "register"){
-            var overviewVC: OverviewController = segue.destinationViewController as OverviewController
-            overviewVC.receivedUsername = usernameTextfield.text
+        else{
+            //Geef error message
         }
     }
 }
