@@ -17,6 +17,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = "Inloggen"
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,6 +45,12 @@ class ViewController: UIViewController {
         }
         else{
             //Geef error message
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "toGroups"){
+            self.navigationItem.title = "Uitloggen"
         }
     }
 }
