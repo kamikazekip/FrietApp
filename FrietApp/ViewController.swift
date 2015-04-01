@@ -8,20 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, NSURLConnectionDelegate {
+    
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    var data: NSMutableData = NSMutableData()
+    var lastStatusCode = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = "Inloggen"
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -33,9 +31,51 @@ class ViewController: UIViewController {
     
     @IBAction func inloggen(sender: UIButton) {
         println("Evaluate: " + usernameField.text + " pass: " + passwordField.text)
-        var outcome = true
-        //Asynchroon
-        dealWithOutcome(outcome)
+        let username = usernameField.text
+        let password = passwordField.text
+        let loginString = NSString(format: "%@:%@", username, password)
+        let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
+        let base64LoginString = "Basic " + loginData.base64EncodedStringWithOptions(nil)
+        
+        // create the request
+        let url = NSURL(string: "https://desolate-bayou-9128.herokuapp.com/login")
+        let request = NSMutableURLRequest(URL: url!)
+        request.HTTPMethod = "POST"
+        request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
+        
+        
+        // fire off the request
+        // make sure your class conforms to NSURLConnectionDelegate
+        let urlConnection = NSURLConnection(request: request, delegate: self)
+    }
+    
+    //NSURLConnection delegate method
+    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
+        println("Failed with error:\(error.localizedDescription)")
+    }
+    
+    //NSURLConnection delegate method
+    func connection(didReceiveResponse: NSURLConnection!, didReceiveResponse response: NSHTTPURLResponse!) {
+        //New request so we need to clear the data object
+        self.lastStatusCode = response.statusCode;
+        self.data = NSMutableData()
+    }
+    
+    //NSURLConnection delegate method
+    func connection(connection: NSURLConnection!, didReceiveData data: NSData!) {
+        //Append incoming data
+        self.data.appendData(data)
+    }
+    
+    //NSURLConnection delegate method
+    func connectionDidFinishLoading(connection: NSURLConnection!) {
+        if(self.lastStatusCode == 200){
+            var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(self.data, options:    NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+            println(jsonResult)
+            dealWithOutcome(true)
+        } else {
+            dealWithOutcome(false);
+        }
         
     }
     
@@ -44,14 +84,11 @@ class ViewController: UIViewController {
             self.performSegueWithIdentifier("toGroups", sender: self)
         }
         else{
-            //Geef error message
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "toGroups"){
-            self.navigationItem.title = "Uitloggen"
+            var alert = UIAlertController(title: "Oeps!", message: "Onbekende combinatie.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Sluiten", style: UIAlertActionStyle.Destructive, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 }
+
 
