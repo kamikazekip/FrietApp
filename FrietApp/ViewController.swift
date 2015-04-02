@@ -84,7 +84,7 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
             self.performSegueWithIdentifier("toGroups", sender: self)
         }
         else{
-            var alert = UIAlertController(title: "Oeps!", message: "Onbekende combinatie.", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Oeps!", message: "Ongeldige combinatie!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Sluiten", style: UIAlertActionStyle.Destructive, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }
