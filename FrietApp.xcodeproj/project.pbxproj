@@ -16,6 +16,7 @@
 		5253F06A1AA8624E00C458E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5253F0691AA8624E00C458E3 /* Images.xcassets */; };
 		5253F06D1AA8624E00C458E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5253F06B1AA8624E00C458E3 /* LaunchScreen.xib */; };
 		5253F0791AA8624E00C458E3 /* FrietAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0781AA8624E00C458E3 /* FrietAppTests.swift */; };
+		CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE652E091AD477E5008FF7B1 /* GroupCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		5253F0721AA8624E00C458E3 /* FrietAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrietAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5253F0771AA8624E00C458E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5253F0781AA8624E00C458E3 /* FrietAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrietAppTests.swift; sourceTree = "<group>"; };
+		CE652E091AD477E5008FF7B1 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				5253F0601AA8624E00C458E3 /* Supporting Files */,
 				521890C51ABC445200E79E42 /* GroupController.swift */,
 				521890C71ABC4BFB00E79E42 /* OrderListController.swift */,
+				CE652E091AD477E5008FF7B1 /* GroupCell.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */,
 				5253F0651AA8624E00C458E3 /* ViewController.swift in Sources */,
 				521890C61ABC445200E79E42 /* GroupController.swift in Sources */,
+				CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */,
 				521890C41ABC431700E79E42 /* NewGroupController.swift in Sources */,
 				5253F0631AA8624E00C458E3 /* AppDelegate.swift in Sources */,
 			);

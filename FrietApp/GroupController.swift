@@ -39,17 +39,17 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("groupCell") as UITableViewCell
-        cell.textLabel?.text = groups[indexPath.row]
-        cell.detailTextLabel?.text = numbers[indexPath.row]
+        var cell = tableView.dequeueReusableCellWithIdentifier("groupCell") as GroupCell
+        cell.groupName.text = groups[indexPath.row]
+        cell.numberOfOrders.text = numbers[indexPath.row]
         return cell
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toGroupOrders"){
-            var cell = sender as UITableViewCell!
+            var cell = sender as GroupCell!
             var secondController = segue.destinationViewController as OrderListController
-            secondController.receivedGroupname = cell.textLabel?.text
+            secondController.receivedGroupname = cell.groupName.text
         }
     }
 }

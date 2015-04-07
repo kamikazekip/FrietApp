@@ -12,12 +12,20 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var data: NSMutableData = NSMutableData()
     var lastStatusCode = 1
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        usernameField.text = "admin"
+        passwordField.text = "admin"
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,7 +38,7 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
     }
     
     @IBAction func inloggen(sender: UIButton) {
-        println("Evaluate: " + usernameField.text + " pass: " + passwordField.text)
+        activityIndicator.hidden = false
         let username = usernameField.text
         let password = passwordField.text
         let loginString = NSString(format: "%@:%@", username, password)
@@ -69,6 +77,7 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
     
     //NSURLConnection delegate method
     func connectionDidFinishLoading(connection: NSURLConnection!) {
+        activityIndicator.hidden = true
         if(self.lastStatusCode == 200){
             var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(self.data, options:    NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
             println(jsonResult)
@@ -87,6 +96,7 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
             var alert = UIAlertController(title: "Oeps!", message: "Ongeldige combinatie!", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Sluiten", style: UIAlertActionStyle.Destructive, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
+            passwordField.text = ""
         }
     }
 }
