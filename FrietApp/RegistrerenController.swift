@@ -14,6 +14,10 @@ class RegistrerenController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmField: UITextField!
+    var data: NSMutableData = NSMutableData()
+    var lastStatusCode = 1
+    var groups: AnyObject!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +51,26 @@ class RegistrerenController: UIViewController {
             passwordConfirmField.text = ""
         }
         else {
+            println("registreren");
             
-        }
+            // create the request
+            let request = NSMutableURLRequest(URL: NSURL(string: "https://desolate-bayou-9128.herokuapp.com/users")!)
+            request.HTTPMethod = "POST"
+            let postString = "username=" + username + "&password=" + password
+            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+            let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
+                data, response, error in
+                
+                if error != nil {
+                    println("error=\(error)")
+                    return
+                }
+                
+                println("response = \(response)")
+                
+                let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("responseString = \(responseString)")
+            }
+            task.resume()        }
     }
 }
