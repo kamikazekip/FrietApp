@@ -10,12 +10,12 @@ import UIKit
 
 class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var receivedGroups: AnyObject!
-    var groups : [String] = ["Vrienden", "Werk", "Familie"]
-    var numbers: [String] = ["25", "2", ""]
+    var receivedGroups: [[String: AnyObject]]!
+    var groups: [Group]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        groups = []
         var myBackButton:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
         myBackButton.addTarget(self, action: "popToRoot:", forControlEvents: UIControlEvents.TouchUpInside)
         myBackButton.setTitle("Uitloggen", forState: UIControlState.Normal)
@@ -23,15 +23,22 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
         myBackButton.sizeToFit()
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: myBackButton)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
+        //_id: String, creator: String, name: String, orders: [String], users: [String]
+        for group in receivedGroups {
+            let _id = group["_id"]! as String
+            let creator = group["creator"]! as String
+            let name = group["name"]! as String
+            let orders = group["orders"]! as [String]
+            let users = group["users"]! as [String]
+            groups.append(Group(_id: _id, creator: creator, name: name, orders: orders, users: users))
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func popToRoot(sender:UIBarButtonItem){
-        println("Uitloggen")
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
@@ -41,8 +48,8 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("groupCell") as GroupCell
-        cell.groupName.text = groups[indexPath.row]
-        cell.numberOfOrders.text = numbers[indexPath.row]
+        cell.groupName.text = groups[indexPath.row].name
+        cell.numberOfOrders.text = "\(groups[indexPath.row].numberOfOrders)"
         return cell
     }
     

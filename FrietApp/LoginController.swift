@@ -15,7 +15,7 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var data: NSMutableData = NSMutableData()
     var lastStatusCode = 1
-    var groups: AnyObject!
+    var groups: [[String: AnyObject]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,8 +79,9 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         activityIndicator.hidden = true
         if(self.lastStatusCode == 200){
-            let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [String : AnyObject]
-            println(json)
+            let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [String: AnyObject]!
+            let receivedGroups = json["groups"]! as [[String :AnyObject]]!
+            groups = receivedGroups
             dealWithOutcome(true)
         } else {
             dealWithOutcome(false);

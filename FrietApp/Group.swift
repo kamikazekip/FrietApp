@@ -14,8 +14,16 @@ class Group {
     var name: String!
     var orders: [String]!
     var users: [String]!
+    var numberOfOrders = 0
     
-    init(group: NSDictionary){
-        //_id = group._id
+    init(_id: String, creator: String, name: String, orders: [String], users: [String]){
+        self._id = _id
+        self.creator = creator
+        self.name = name
+        self.orders = orders
+        self.users = users
+        for order in orders{
+            numberOfOrders++
+        }
     }
 }
