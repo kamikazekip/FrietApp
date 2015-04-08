@@ -17,7 +17,6 @@
 		5253F06D1AA8624E00C458E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5253F06B1AA8624E00C458E3 /* LaunchScreen.xib */; };
 		5253F0791AA8624E00C458E3 /* FrietAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0781AA8624E00C458E3 /* FrietAppTests.swift */; };
 		52D6EE551AD5250700613D1A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE541AD5250700613D1A /* Group.swift */; };
-		52D6EE571AD52DEF00613D1A /* RegistrerenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */; };
 		CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE652E091AD477E5008FF7B1 /* GroupCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +45,6 @@
 		5253F0771AA8624E00C458E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5253F0781AA8624E00C458E3 /* FrietAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrietAppTests.swift; sourceTree = "<group>"; };
 		52D6EE541AD5250700613D1A /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
-		52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrerenController.swift; sourceTree = "<group>"; };
 		CE652E091AD477E5008FF7B1 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,7 +98,6 @@
 				521890C71ABC4BFB00E79E42 /* OrderListController.swift */,
 				CE652E091AD477E5008FF7B1 /* GroupCell.swift */,
 				52D6EE541AD5250700613D1A /* Group.swift */,
-				52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -234,7 +231,6 @@
 				521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */,
 				5253F0651AA8624E00C458E3 /* LoginController.swift in Sources */,
 				521890C61ABC445200E79E42 /* GroupController.swift in Sources */,
-				52D6EE571AD52DEF00613D1A /* RegistrerenController.swift in Sources */,
 				CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */,
 				521890C41ABC431700E79E42 /* NewGroupController.swift in Sources */,
 				5253F0631AA8624E00C458E3 /* AppDelegate.swift in Sources */,

@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, NSURLConnectionDelegate {
+class LoginController: UIViewController, NSURLConnectionDelegate {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var data: NSMutableData = NSMutableData()
     var lastStatusCode = 1
-    
+    var groups: NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +81,7 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
         if(self.lastStatusCode == 200){
             var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(self.data, options:    NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
             println(jsonResult)
+            groups = jsonResult
             dealWithOutcome(true)
         } else {
             dealWithOutcome(false);
@@ -97,6 +98,14 @@ class ViewController: UIViewController, NSURLConnectionDelegate {
             alert.addAction(UIAlertAction(title: "Sluiten", style: UIAlertActionStyle.Destructive, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             passwordField.text = ""
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "toGroups"){
+            var cell = sender as GroupCell!
+            var secondController = segue.destinationViewController as OrderListController
+            secondController.receivedGroupname = cell.groupName.text
         }
     }
 }
