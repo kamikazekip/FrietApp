@@ -15,6 +15,13 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var myBackButton:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        myBackButton.addTarget(self, action: "popToRoot:", forControlEvents: UIControlEvents.TouchUpInside)
+        myBackButton.setTitle("Uitloggen", forState: UIControlState.Normal)
+        myBackButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        myBackButton.sizeToFit()
+        var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: myBackButton)
+        self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
         for group in receivedGroups {
             let _id = group["_id"]! as String
             let creator = group["creator"]! as String
@@ -24,15 +31,7 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.groups.append(Group(_id: _id, creator: creator, name: name, orders: orders, users: users))
         }
     }
-    
-    override func viewWillDisappear(animated : Bool) {
-        super.viewWillDisappear(animated)
-        
-        if (self.isMovingFromParentViewController() == true){
-            //Functie voor uitloggen, wordt uitgevoerd op het moment dat een persoon uitlogt
-        }
-    }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

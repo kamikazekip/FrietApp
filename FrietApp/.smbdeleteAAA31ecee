@@ -66,6 +66,8 @@ class RegistrerenController: UIViewController {
                     return
                 }
                 
+                println("response = \(response)")
+                
                 let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
                 
                 // Create the alert controller

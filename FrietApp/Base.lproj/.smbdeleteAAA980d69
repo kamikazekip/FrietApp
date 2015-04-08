@@ -448,29 +448,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvQ-AQ-ffz">
-                                                    <rect key="frame" x="8" y="15" width="33" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creator" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sT-Mp-9Kq">
-                                                    <rect key="frame" x="488" y="16" width="71" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="71" id="QfT-S2-Bxe"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="262" y="14" width="33" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="5sT-Mp-9Kq" firstAttribute="top" secondItem="OUz-k6-EP2" secondAttribute="topMargin" constant="8" id="Aab-gn-wKd"/>
-                                                <constraint firstItem="FvQ-AQ-ffz" firstAttribute="top" secondItem="OUz-k6-EP2" secondAttribute="topMargin" constant="7" id="EeO-nl-uet"/>
-                                                <constraint firstItem="5sT-Mp-9Kq" firstAttribute="trailing" secondItem="OUz-k6-EP2" secondAttribute="trailingMargin" id="NZ6-T1-AA4"/>
-                                                <constraint firstItem="FvQ-AQ-ffz" firstAttribute="leading" secondItem="OUz-k6-EP2" secondAttribute="leadingMargin" id="y71-wQ-zt1"/>
+                                                <constraint firstAttribute="centerX" secondItem="FvQ-AQ-ffz" secondAttribute="centerX" constant="5" id="3fS-yE-edK"/>
+                                                <constraint firstAttribute="centerY" secondItem="FvQ-AQ-ffz" secondAttribute="centerY" constant="0.5" id="HGD-il-rQs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="creator" destination="5sT-Mp-9Kq" id="Wwr-0Q-Y5q"/>
                                             <outlet property="title" destination="FvQ-AQ-ffz" id="F1K-oF-dN9"/>
                                         </connections>
                                     </tableViewCell>
@@ -497,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSb-cz-14E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1805" y="1153"/>
+            <point key="canvasLocation" x="1805" y="1155"/>
         </scene>
     </scenes>
     <resources>

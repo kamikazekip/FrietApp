@@ -19,13 +19,13 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         usernameField.text = "admin"
         passwordField.text = "admin"
+        self.navigationItem.title = "Inloggen"
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,6 +103,7 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toGroups"){
+            self.navigationItem.title = "Uitloggen"
             var groupController = segue.destinationViewController as GroupController
             groupController.receivedGroups = groups;
         }
