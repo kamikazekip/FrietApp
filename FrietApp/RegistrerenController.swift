@@ -51,7 +51,7 @@ class RegistrerenController: UIViewController {
             passwordConfirmField.text = ""
         }
         else {
-            println("registreren");
+            self.view.endEditing(true)
             
             // create the request
             let request = NSMutableURLRequest(URL: NSURL(string: "https://desolate-bayou-9128.herokuapp.com/users")!)
@@ -69,8 +69,26 @@ class RegistrerenController: UIViewController {
                 println("response = \(response)")
                 
                 let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("responseString = \(responseString)")
+                
+                // Create the alert controller
+                var alertController = UIAlertController(title: "Registreren gelukt!", message: "\(username), je bent een held!", preferredStyle: .Alert)
+                
+                // Create the actions
+                var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                    UIAlertAction in
+                    self.goToLogin()
+                }
+                
+                // Add the actions
+                alertController.addAction(okAction)
+                
+                // Present the controller
+                self.presentViewController(alertController, animated: true, completion: nil)
             }
-            task.resume()        }
+            task.resume()
+        }
+    }
+    func goToLogin(){
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }

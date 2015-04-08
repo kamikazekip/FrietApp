@@ -23,7 +23,6 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
         myBackButton.sizeToFit()
         var myCustomBackButtonItem:UIBarButtonItem = UIBarButtonItem(customView: myBackButton)
         self.navigationItem.leftBarButtonItem  = myCustomBackButtonItem
-        //_id: String, creator: String, name: String, orders: [String], users: [String]
         for group in receivedGroups {
             let _id = group["_id"]! as String
             let creator = group["creator"]! as String
