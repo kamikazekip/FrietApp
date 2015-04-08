@@ -10,6 +10,7 @@ import UIKit
 
 class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    var receivedGroups: AnyObject!
     var groups : [String] = ["Vrienden", "Werk", "Familie"]
     var numbers: [String] = ["25", "2", ""]
     

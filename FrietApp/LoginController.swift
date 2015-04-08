@@ -15,7 +15,7 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var data: NSMutableData = NSMutableData()
     var lastStatusCode = 1
-    var groups: NSDictionary!
+    var groups: AnyObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,9 +79,8 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         activityIndicator.hidden = true
         if(self.lastStatusCode == 200){
-            var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(self.data, options:    NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-            println(jsonResult)
-            groups = jsonResult
+            let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [String : AnyObject]
+            println(json)
             dealWithOutcome(true)
         } else {
             dealWithOutcome(false);
@@ -103,9 +102,8 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toGroups"){
-            var cell = sender as GroupCell!
-            var secondController = segue.destinationViewController as OrderListController
-            secondController.receivedGroupname = cell.groupName.text
+            var groupController = segue.destinationViewController as GroupController
+            groupController.receivedGroups = groups;
         }
     }
 }
