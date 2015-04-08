@@ -20,6 +20,7 @@
 		52D6EE571AD52DEF00613D1A /* RegistrerenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */; };
 		52D6EE591AD55FCE00613D1A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE581AD55FCE00613D1A /* Order.swift */; };
 		52D6EE5B1AD56EB900613D1A /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE5A1AD56EB900613D1A /* OrderCell.swift */; };
+		CE3771D81AD5C810002E295B /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3771D71AD5C810002E295B /* SettingsController.swift */; };
 		CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE652E091AD477E5008FF7B1 /* GroupCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrerenController.swift; sourceTree = "<group>"; };
 		52D6EE581AD55FCE00613D1A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		52D6EE5A1AD56EB900613D1A /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
+		CE3771D71AD5C810002E295B /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CE652E091AD477E5008FF7B1 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */,
 				52D6EE581AD55FCE00613D1A /* Order.swift */,
 				52D6EE5A1AD56EB900613D1A /* OrderCell.swift */,
+				CE3771D71AD5C810002E295B /* SettingsController.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */,
 				5253F0651AA8624E00C458E3 /* LoginController.swift in Sources */,
 				52D6EE591AD55FCE00613D1A /* Order.swift in Sources */,
+				CE3771D81AD5C810002E295B /* SettingsController.swift in Sources */,
 				521890C61ABC445200E79E42 /* GroupController.swift in Sources */,
 				52D6EE571AD52DEF00613D1A /* RegistrerenController.swift in Sources */,
 				CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */,

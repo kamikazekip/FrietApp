@@ -13,6 +13,9 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
+    
     var data: NSMutableData = NSMutableData()
     var lastStatusCode = 1
     var groups: [[String: AnyObject]]!
@@ -38,6 +41,8 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     }
     
     @IBAction func inloggen(sender: UIButton) {
+        loginButton.enabled = false
+        registerButton.enabled = false
         activityIndicator.hidden = false
         let username = usernameField.text
         let password = passwordField.text
@@ -77,6 +82,8 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     
     //NSURLConnection delegate method
     func connectionDidFinishLoading(connection: NSURLConnection!) {
+        loginButton.enabled = true
+        registerButton.enabled = true
         activityIndicator.hidden = true
         if(self.lastStatusCode == 200){
             let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [String: AnyObject]!
