@@ -10,17 +10,18 @@ import UIKit
 
 class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var groupTableView: UITableView!
     var receivedGroups: [[String: AnyObject]]!
     var groups: [Group]! = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         for group in receivedGroups {
-            let _id = group["_id"]! as String
-            let creator = group["creator"]! as String
-            let name = group["name"]! as String
-            let orders = group["orders"]! as [String]
-            let users = group["users"]! as [String]
+            let _id = group["_id"]! as! String
+            let creator = group["creator"]! as! String
+            let name = group["name"]! as! String
+            let orders = group["orders"]! as! [String]
+            let users = group["users"]! as! [String]
             self.groups.append(Group(_id: _id, creator: creator, name: name, orders: orders, users: users))
         }
     }
@@ -46,7 +47,7 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("groupCell") as GroupCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("groupCell") as! GroupCell
         cell.groupName.text = groups[indexPath.row].name
         cell.numberOfOrders.text = "\(groups[indexPath.row].numberOfOrders)"
         cell.group = groups[indexPath.row]
@@ -55,9 +56,13 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toGroupOrders"){
-            var cell = sender as GroupCell!
-            var secondController = segue.destinationViewController as OrderListController
+            var cell = sender as! GroupCell!
+            var secondController = segue.destinationViewController as! OrderListController
             secondController.receivedGroup = cell.group
+        }
+        if(segue.identifier == "toMakeGroup"){
+            var secondController = segue.destinationViewController as! NewGroupController
+            secondController.oldController = self
         }
     }
 }

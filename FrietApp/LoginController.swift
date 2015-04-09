@@ -63,7 +63,7 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     }
     
     //NSURLConnection delegate method
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         println("Failed with error:\(error.localizedDescription)")
     }
     
@@ -86,8 +86,8 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
         registerButton.enabled = true
         activityIndicator.hidden = true
         if(self.lastStatusCode == 200){
-            let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [String: AnyObject]!
-            let receivedGroups = json["groups"]! as [[String :AnyObject]]!
+            let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [String: AnyObject]!
+            let receivedGroups = json["groups"]! as! [[String :AnyObject]]!
             groups = receivedGroups
             dealWithOutcome(true)
         } else {
@@ -111,7 +111,7 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "toGroups"){
             self.navigationItem.title = "Uitloggen"
-            var groupController = segue.destinationViewController as GroupController
+            var groupController = segue.destinationViewController as! GroupController
             groupController.receivedGroups = groups;
         }
     }

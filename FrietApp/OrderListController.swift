@@ -53,7 +53,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     
     
     //NSURLConnection delegate method
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         println("Failed with error:\(error.localizedDescription)")
     }
     
@@ -74,19 +74,19 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     func connectionDidFinishLoading(connection: NSURLConnection!) {
         if(self.lastStatusCode == 200){
             let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil)
-            let receivedOrders = json as [[String :AnyObject]]!
+            let receivedOrders = json as! [[String :AnyObject]]!
         
             for order in receivedOrders {
-                let _id = order["_id"]! as String
-                let active = order["active"]! as Bool
-                let group_id = order["group_id"]! as String
-                let creator = order["creator"]! as String
+                let _id = order["_id"]! as! String
+                let active = order["active"]! as! Bool
+                let group_id = order["group_id"]! as! String
+                let creator = order["creator"]! as! String
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                let date = dateFormatter.dateFromString(order["date"]! as String)!
-                let snackbarName = order["snackbar"]!["snackbar"]! as String
-                let snackbarUrl = order["snackbar"]!["url"]! as String
-                let dishes = order["dishes"]! as [String]
+                let date = dateFormatter.dateFromString(order["date"]! as! String)!
+                let snackbarName = order["snackbar"]!["snackbar"]! as! String
+                let snackbarUrl = order["snackbar"]!["url"]! as! String
+                let dishes = order["dishes"]! as! [String]
                 self.orders.append(Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, dishes: dishes))
             }
             activityIndicator.hidden = true
@@ -102,7 +102,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as OrderCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as! OrderCell
         var dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         var convertedDate = dateFormatter.stringFromDate(orders[indexPath.row].date)

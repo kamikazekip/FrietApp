@@ -14,6 +14,7 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var data: NSMutableData = NSMutableData()
+    var oldController: GroupController!
     var lastStatusCode = 1
     var group: Group!
     
@@ -32,7 +33,7 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
         createButton.enabled = false
         activityIndicator.hidden = false
         let groupName = groupNameField.text
-        if(countElements(groupName) > 2){
+        if(count(groupName) > 2){
             postGroup(groupName)
         }
     }
@@ -43,7 +44,8 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
         let base64LoginString = "Basic " + loginData.base64EncodedStringWithOptions(nil)
         
         // create the request
-        let url = NSURL(string: "https://desolate-bayou-9128.herokuapp.com/groups/\(groupName)")
+        var urlString = "https://desolate-bayou-9128.herokuapp.com/groups/\(groupName)".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        let url = NSURL(string: urlString)
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
@@ -54,11 +56,11 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
     }
     
     func buildGroup(newGroup: [String: AnyObject]){
-        let _id = newGroup["_id"]! as String
-        let creator = newGroup["creator"] as String
-        let name = newGroup["name"] as String
-        let orders = newGroup["orders"] as [String]
-        let users = newGroup["users"] as [String]
+        let _id = newGroup["_id"]! as! String
+        let creator = newGroup["creator"] as! String
+        let name = newGroup["name"] as! String
+        let orders = newGroup["orders"] as! [String]
+        let users = newGroup["users"] as! [String]
         group = Group(_id: _id, creator: creator, name: name, orders: orders, users: users)
         success()
     }
@@ -82,11 +84,12 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
     
     func finishUp(){
         self.groupNameField.text = ""
-        self.navigationController?.popToRootViewControllerAnimated(true)
+        self.oldController.groups.append(self.group)
+        self.oldController.groupTableView.reloadData()
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
-    //NSURLConnection delegate method
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!) {
+    func connection(connection: NSURLConnection, didFailWithError error: NSError) {
         println("Failed with error:\(error.localizedDescription)")
     }
     
@@ -108,8 +111,8 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
         createButton.enabled = true
         activityIndicator.hidden = true
         if(self.lastStatusCode == 200){
-            let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as [String: AnyObject]!
-            let newGroup = json["data"] as [String: AnyObject]!
+            let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [String: AnyObject]!
+            let newGroup = json["data"] as! [String: AnyObject]!
             buildGroup(newGroup)
         } else {
             var alert = UIAlertController(title: "Oh nee!", message: "Er is iets mis gegaan tijdens het aanmaken van uw groep!", preferredStyle: UIAlertControllerStyle.Alert)

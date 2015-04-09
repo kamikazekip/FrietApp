@@ -58,12 +58,12 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(indexPath.section == 0){
-            var cell = tableView.dequeueReusableCellWithIdentifier("orderByActiveCell") as SortByActiveCell
+            var cell = tableView.dequeueReusableCellWithIdentifier("orderByActiveCell") as! SortByActiveCell
             cell.mySwitch.on = sortByActive as Bool!
             return cell
         }
         else{
-            var cell = tableView.dequeueReusableCellWithIdentifier("vibrateCell") as VibrateCell!
+            var cell = tableView.dequeueReusableCellWithIdentifier("vibrateCell") as! VibrateCell!
             cell.mySwitch.on = vibrate as Bool!
             return cell
         }
