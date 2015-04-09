@@ -10,6 +10,8 @@
 		521890C41ABC431700E79E42 /* NewGroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890C31ABC431700E79E42 /* NewGroupController.swift */; };
 		521890C61ABC445200E79E42 /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890C51ABC445200E79E42 /* GroupController.swift */; };
 		521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521890C71ABC4BFB00E79E42 /* OrderListController.swift */; };
+		52411DD71AD67608002941CA /* SortByActiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52411DD61AD67608002941CA /* SortByActiveCell.swift */; };
+		52411DD91AD67681002941CA /* VibrateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52411DD81AD67681002941CA /* VibrateCell.swift */; };
 		5253F0631AA8624E00C458E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0621AA8624E00C458E3 /* AppDelegate.swift */; };
 		5253F0651AA8624E00C458E3 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0641AA8624E00C458E3 /* LoginController.swift */; };
 		5253F0681AA8624E00C458E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5253F0661AA8624E00C458E3 /* Main.storyboard */; };
@@ -38,6 +40,8 @@
 		521890C31ABC431700E79E42 /* NewGroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupController.swift; sourceTree = "<group>"; };
 		521890C51ABC445200E79E42 /* GroupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		521890C71ABC4BFB00E79E42 /* OrderListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderListController.swift; sourceTree = "<group>"; };
+		52411DD61AD67608002941CA /* SortByActiveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortByActiveCell.swift; sourceTree = "<group>"; };
+		52411DD81AD67681002941CA /* VibrateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VibrateCell.swift; sourceTree = "<group>"; };
 		5253F05D1AA8624E00C458E3 /* FrietApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrietApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5253F0611AA8624E00C458E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5253F0621AA8624E00C458E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				52D6EE581AD55FCE00613D1A /* Order.swift */,
 				52D6EE5A1AD56EB900613D1A /* OrderCell.swift */,
 				CE3771D71AD5C810002E295B /* SettingsController.swift */,
+				52411DD61AD67608002941CA /* SortByActiveCell.swift */,
+				52411DD81AD67681002941CA /* VibrateCell.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -241,6 +247,8 @@
 			files = (
 				52D6EE5B1AD56EB900613D1A /* OrderCell.swift in Sources */,
 				52D6EE551AD5250700613D1A /* Group.swift in Sources */,
+				52411DD71AD67608002941CA /* SortByActiveCell.swift in Sources */,
+				52411DD91AD67681002941CA /* VibrateCell.swift in Sources */,
 				521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */,
 				5253F0651AA8624E00C458E3 /* LoginController.swift in Sources */,
 				52D6EE591AD55FCE00613D1A /* Order.swift in Sources */,

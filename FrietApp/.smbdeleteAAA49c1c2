@@ -10,36 +10,13 @@ import UIKit
 
 class SettingsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-    var sortByActive: Bool?
-    var vibrate: Bool?
-    
-    let defaults = NSUserDefaults.standardUserDefaults()
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        sortByActive = defaults.valueForKey("sortByActive") as? Bool
-        println(sortByActive)
-        vibrate = defaults.valueForKey("vibrate") as? Bool
-        if (sortByActive == nil ) {
-            defaults.setValue(true, forKey: "sortByActive")
-            sortByActive = true
-        }
-        if(vibrate == nil) {
-            defaults.setValue(true, forKey: "vibrate")
-            vibrate = true
-        }
-        println(sortByActive)
-        
-        defaults.synchronize()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -57,17 +34,14 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell: UITableViewCell!
         if(indexPath.section == 0){
-            var cell = tableView.dequeueReusableCellWithIdentifier("orderByActiveCell") as SortByActiveCell
-            cell.mySwitch.on = sortByActive as Bool!
-            return cell
+            cell = tableView.dequeueReusableCellWithIdentifier("orderByActiveCell") as UITableViewCell
         }
         else{
-            var cell = tableView.dequeueReusableCellWithIdentifier("vibrateCell") as VibrateCell!
-            cell.mySwitch.on = vibrate as Bool!
-            return cell
+            cell = tableView.dequeueReusableCellWithIdentifier("vibrateCell") as UITableViewCell
         }
-        
+        return cell
     }
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){

@@ -16,29 +16,31 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     var receivedGroup : Group!
     var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var titleBarTitle: UINavigationItem!
+    var sortByActive: Bool?
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activityIndicator.frame = self.view.frame
-        activityIndicator.center = self.view.center
-        activityIndicator.color = UIColor(red: 251/255, green: 169/255, blue: 7/255, alpha: 1)
-        activityIndicator.startAnimating()
-        self.view.addSubview( activityIndicator )
-        tableView.hidden = true
-        titleBarTitle.title = "\(receivedGroup.name) - Orders"
+        sortByActive = defaults.valueForKey("sortByActive") as? Bool
+        if (sortByActive == nil ) {
+            sortByActive = true
+        }
+        startActivityIndicator()
+        
         let loginString = NSString(format: "%@:%@", "admin", "admin")
         let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
         let base64LoginString = "Basic " + loginData.base64EncodedStringWithOptions(nil)
         
         // create the request
-        let url = NSURL(string: "https://desolate-bayou-9128.herokuapp.com/groups/\(receivedGroup._id)/orders?orderBy=active")
+        var urlString = "https://desolate-bayou-9128.herokuapp.com/groups/\(receivedGroup._id)/orders"
+        if(sortByActive == true){
+            urlString += "?orderBy=active"
+        }
+        let url = NSURL(string: urlString)
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "GET"
         request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
-        
         
         // fire off the request
         // make sure your class conforms to NSURLConnectionDelegate
@@ -115,5 +117,16 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         }
         
         return cell
+    }
+    
+    func startActivityIndicator(){
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+        activityIndicator.frame = self.view.frame
+        activityIndicator.center = self.view.center
+        activityIndicator.color = UIColor(red: 251/255, green: 169/255, blue: 7/255, alpha: 1)
+        activityIndicator.startAnimating()
+        self.view.addSubview( activityIndicator )
+        tableView.hidden = true
+        titleBarTitle.title = "\(receivedGroup.name)"
     }
 }
