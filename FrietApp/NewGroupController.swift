@@ -17,6 +17,7 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
     var oldController: GroupController!
     var lastStatusCode = 1
     var group: Group!
+    var defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +40,7 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
     }
     
     func postGroup(groupName: String){
-        let loginString = NSString(format: "%@:%@", "admin", "admin")
-        let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64LoginString = "Basic " + loginData.base64EncodedStringWithOptions(nil)
+        let base64LoginString = defaults.valueForKey("authHeader") as! String
         
         // create the request
         var urlString = "https://desolate-bayou-9128.herokuapp.com/groups/\(groupName)".stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!

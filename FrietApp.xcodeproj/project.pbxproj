@@ -18,6 +18,9 @@
 		5253F06A1AA8624E00C458E3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5253F0691AA8624E00C458E3 /* Images.xcassets */; };
 		5253F06D1AA8624E00C458E3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5253F06B1AA8624E00C458E3 /* LaunchScreen.xib */; };
 		5253F0791AA8624E00C458E3 /* FrietAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5253F0781AA8624E00C458E3 /* FrietAppTests.swift */; };
+		52D1CCC31AD7EDCB00032AF6 /* DishesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1CCC21AD7EDCB00032AF6 /* DishesController.swift */; };
+		52D1CCC51AD7F99100032AF6 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1CCC41AD7F99100032AF6 /* Dish.swift */; };
+		52D1CCC71AD7F9B200032AF6 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1CCC61AD7F9B200032AF6 /* DishCell.swift */; };
 		52D6EE551AD5250700613D1A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE541AD5250700613D1A /* Group.swift */; };
 		52D6EE571AD52DEF00613D1A /* RegistrerenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */; };
 		52D6EE591AD55FCE00613D1A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE581AD55FCE00613D1A /* Order.swift */; };
@@ -52,6 +55,9 @@
 		5253F0721AA8624E00C458E3 /* FrietAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrietAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5253F0771AA8624E00C458E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5253F0781AA8624E00C458E3 /* FrietAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrietAppTests.swift; sourceTree = "<group>"; };
+		52D1CCC21AD7EDCB00032AF6 /* DishesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesController.swift; sourceTree = "<group>"; };
+		52D1CCC41AD7F99100032AF6 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
+		52D1CCC61AD7F9B200032AF6 /* DishCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
 		52D6EE541AD5250700613D1A /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrerenController.swift; sourceTree = "<group>"; };
 		52D6EE581AD55FCE00613D1A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -116,6 +122,9 @@
 				CE3771D71AD5C810002E295B /* SettingsController.swift */,
 				52411DD61AD67608002941CA /* SortByActiveCell.swift */,
 				52411DD81AD67681002941CA /* VibrateCell.swift */,
+				52D1CCC21AD7EDCB00032AF6 /* DishesController.swift */,
+				52D1CCC41AD7F99100032AF6 /* Dish.swift */,
+				52D1CCC61AD7F9B200032AF6 /* DishCell.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -246,10 +255,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				52D6EE5B1AD56EB900613D1A /* OrderCell.swift in Sources */,
+				52D1CCC71AD7F9B200032AF6 /* DishCell.swift in Sources */,
 				52D6EE551AD5250700613D1A /* Group.swift in Sources */,
 				52411DD71AD67608002941CA /* SortByActiveCell.swift in Sources */,
+				52D1CCC31AD7EDCB00032AF6 /* DishesController.swift in Sources */,
 				52411DD91AD67681002941CA /* VibrateCell.swift in Sources */,
 				521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */,
+				52D1CCC51AD7F99100032AF6 /* Dish.swift in Sources */,
 				5253F0651AA8624E00C458E3 /* LoginController.swift in Sources */,
 				52D6EE591AD55FCE00613D1A /* Order.swift in Sources */,
 				CE3771D81AD5C810002E295B /* SettingsController.swift in Sources */,

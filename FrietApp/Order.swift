@@ -17,9 +17,10 @@ class Order {
     var snackbarName: String!
     var snackbarUrl: String!
     var dishes: [String]!
+    var niceDate: String!
     
     init(_id: String, active: Bool, group_id: String, date: NSDate, creator: String,
-        snackbarName: String, snackbarUrl: String, dishes: [String]){
+        snackbarName: String, snackbarUrl: String, dishes: [String], niceDate: String){
         self._id = _id
         self.active = active
         self.group_id = group_id
@@ -28,5 +29,6 @@ class Order {
         self.snackbarName = snackbarName
         self.snackbarUrl = snackbarUrl
         self.dishes = dishes
+        self.niceDate = niceDate
     }
 }

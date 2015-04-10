@@ -20,6 +20,9 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     var lastStatusCode = 1
     var groups: [[String: AnyObject]]!
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var myAuthorizationHeader: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -48,13 +51,13 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
         let password = passwordField.text
         let loginString = NSString(format: "%@:%@", username, password)
         let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64LoginString = "Basic " + loginData.base64EncodedStringWithOptions(nil)
+        myAuthorizationHeader = "Basic " + loginData.base64EncodedStringWithOptions(nil)
         
         // create the request
         let url = NSURL(string: "https://desolate-bayou-9128.herokuapp.com/login")
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
-        request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
+        request.setValue(myAuthorizationHeader, forHTTPHeaderField: "Authorization")
         
         
         // fire off the request
@@ -86,6 +89,8 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
         registerButton.enabled = true
         activityIndicator.hidden = true
         if(self.lastStatusCode == 200){
+            defaults.setValue(myAuthorizationHeader, forKey: "authHeader")
+            defaults.synchronize()
             let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [String: AnyObject]!
             let receivedGroups = json["groups"]! as! [[String :AnyObject]]!
             groups = receivedGroups

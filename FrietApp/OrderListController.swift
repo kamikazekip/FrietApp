@@ -19,6 +19,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     @IBOutlet weak var titleBarTitle: UINavigationItem!
     var sortByActive: Bool?
     let defaults = NSUserDefaults.standardUserDefaults()
+    var loaded: Bool! = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +27,11 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         if (sortByActive == nil ) {
             sortByActive = true
         }
-        startActivityIndicator()
+        if(!loaded){
+            startActivityIndicator()
+        }
         
-        let loginString = NSString(format: "%@:%@", "admin", "admin")
-        let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
-        let base64LoginString = "Basic " + loginData.base64EncodedStringWithOptions(nil)
+        let base64LoginString = defaults.valueForKey("authHeader") as! String
         
         // create the request
         var urlString = "https://desolate-bayou-9128.herokuapp.com/groups/\(receivedGroup._id)/orders"
@@ -44,11 +45,18 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         
         // fire off the request
         // make sure your class conforms to NSURLConnectionDelegate
-        let urlConnection = NSURLConnection(request: request, delegate: self)
+        if(!loaded){
+            let urlConnection = NSURLConnection(request: request, delegate: self)
+        }
+        loaded = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        activityIndicator.removeFromSuperview()
     }
     
     
@@ -87,7 +95,9 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
                 let snackbarName = order["snackbar"]!["snackbar"]! as! String
                 let snackbarUrl = order["snackbar"]!["url"]! as! String
                 let dishes = order["dishes"]! as! [String]
-                self.orders.append(Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, dishes: dishes))
+                dateFormatter.dateFormat = "dd-MM-yyyy"
+                var niceDate = dateFormatter.stringFromDate(date)
+                self.orders.append(Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, dishes: dishes, niceDate: niceDate))
             }
             activityIndicator.hidden = true
             tableView.hidden = false
@@ -103,10 +113,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("orderCell") as! OrderCell
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        var convertedDate = dateFormatter.stringFromDate(orders[indexPath.row].date)
-        cell.title.text = "\(convertedDate)"
+        cell.title.text = "\(orders[indexPath.row].niceDate)"
         var creator = orders[indexPath.row].creator
         cell.creator.text = "\(creator)"
         cell.order = orders[indexPath.row]
@@ -128,5 +135,13 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         self.view.addSubview( activityIndicator )
         tableView.hidden = true
         titleBarTitle.title = "\(receivedGroup.name)"
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "toDishes"){
+            var dishesController = segue.destinationViewController as! DishesController
+            var cellOrder = sender as! OrderCell
+            dishesController.receivedOrder = cellOrder.order
+        }
     }
 }
