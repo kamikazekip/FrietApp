@@ -30,6 +30,7 @@
 		52D6EE5B1AD56EB900613D1A /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE5A1AD56EB900613D1A /* OrderCell.swift */; };
 		CE3771D81AD5C810002E295B /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3771D71AD5C810002E295B /* SettingsController.swift */; };
 		CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE652E091AD477E5008FF7B1 /* GroupCell.swift */; };
+		CEF4EB6B1AD85864009C8F04 /* SnackbarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4EB6A1AD85864009C8F04 /* SnackbarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		52D6EE5A1AD56EB900613D1A /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		CE3771D71AD5C810002E295B /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CE652E091AD477E5008FF7B1 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		CEF4EB6A1AD85864009C8F04 /* SnackbarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				52D1CCC61AD7F9B200032AF6 /* DishCell.swift */,
 				52D1CCCA1AD816A900032AF6 /* MakeOrderController.swift */,
 				52D1CCCE1AD8266800032AF6 /* Snackbar.swift */,
+				CEF4EB6A1AD85864009C8F04 /* SnackbarCell.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				52411DD71AD67608002941CA /* SortByActiveCell.swift in Sources */,
 				52D1CCC31AD7EDCB00032AF6 /* DishesController.swift in Sources */,
 				52411DD91AD67681002941CA /* VibrateCell.swift in Sources */,
+				CEF4EB6B1AD85864009C8F04 /* SnackbarCell.swift in Sources */,
 				521890C81ABC4BFB00E79E42 /* OrderListController.swift in Sources */,
 				52D1CCC51AD7F99100032AF6 /* Dish.swift in Sources */,
 				5253F0651AA8624E00C458E3 /* LoginController.swift in Sources */,

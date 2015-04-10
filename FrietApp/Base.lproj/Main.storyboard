@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DvY-xU-PCP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DvY-xU-PCP">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
@@ -679,24 +679,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kies een snackbar in de buurt!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz7-k3-vnq">
-                                <rect key="frame" x="166" y="28" width="269" height="27"/>
+                                <rect key="frame" x="166" y="92" width="269" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="4cc-IZ-ia3"/>
                                     <constraint firstAttribute="width" constant="269" id="GE5-Wc-OkH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wpL-V9-v8x">
-                                <rect key="frame" x="71" y="63" width="472" height="517"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wpL-V9-v8x">
+                                <rect key="frame" x="16" y="140" width="568" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="snackbarCell" id="dQ5-Zb-8r2">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="snackbarCell" id="dQ5-Zb-8r2" customClass="SnackbarCell" customModule="FrietApp" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dQ5-Zb-8r2" id="rit-h8-EHF">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snackbar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ite-9I-W65">
+                                                    <rect key="frame" x="8" y="11" width="73" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAy-eY-BJE">
+                                                    <rect key="frame" x="505" y="7" width="55" height="30"/>
+                                                    <state key="normal" title="Website">
+                                                        <color key="titleColor" red="1" green="0.99898449879999995" blue="0.99823578530000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="openUrl:" destination="dQ5-Zb-8r2" eventType="touchUpInside" id="61z-bL-TQc"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TAy-eY-BJE" firstAttribute="baseline" secondItem="ite-9I-W65" secondAttribute="baseline" id="AUF-yf-cTm"/>
+                                                <constraint firstItem="ite-9I-W65" firstAttribute="leading" secondItem="rit-h8-EHF" secondAttribute="leadingMargin" id="ojB-TK-Ae6"/>
+                                                <constraint firstItem="ite-9I-W65" firstAttribute="top" secondItem="rit-h8-EHF" secondAttribute="topMargin" constant="3" id="sGR-Sk-mb2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TAy-eY-BJE" secondAttribute="trailing" id="yZU-Yo-b93"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98431372549999996" green="0.62352941179999999" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="snackbarLabel" destination="ite-9I-W65" id="Tby-mU-Sii"/>
+                                            <outlet property="websiteButton" destination="TAy-eY-BJE" id="7nz-bJ-25L"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -707,15 +741,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wpL-V9-v8x" firstAttribute="top" secondItem="Oz7-k3-vnq" secondAttribute="bottom" constant="8" symbolic="YES" id="66h-ht-9tL"/>
+                            <constraint firstItem="wpL-V9-v8x" firstAttribute="top" secondItem="Oz7-k3-vnq" secondAttribute="bottom" constant="21" id="66h-ht-9tL"/>
                             <constraint firstItem="Oz7-k3-vnq" firstAttribute="centerX" secondItem="Kow-95-BT4" secondAttribute="centerX" id="NfQ-9h-W8H"/>
                             <constraint firstAttribute="bottom" secondItem="wpL-V9-v8x" secondAttribute="bottom" constant="20" symbolic="YES" id="Xso-BW-hhp"/>
-                            <constraint firstItem="wpL-V9-v8x" firstAttribute="leading" secondItem="Kow-95-BT4" secondAttribute="leadingMargin" constant="55" id="e2j-tq-0K7"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wpL-V9-v8x" secondAttribute="trailing" constant="41" id="eeL-7F-zkj"/>
-                            <constraint firstItem="Oz7-k3-vnq" firstAttribute="top" secondItem="Kow-95-BT4" secondAttribute="topMargin" constant="28" id="ra7-Io-uMo"/>
+                            <constraint firstItem="wpL-V9-v8x" firstAttribute="leading" secondItem="Kow-95-BT4" secondAttribute="leadingMargin" id="e2j-tq-0K7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wpL-V9-v8x" secondAttribute="trailing" id="eeL-7F-zkj"/>
+                            <constraint firstItem="Oz7-k3-vnq" firstAttribute="top" secondItem="Kow-95-BT4" secondAttribute="topMargin" constant="92" id="ra7-Io-uMo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sessie aanmaken" id="5kH-8y-Uhu"/>
+                    <connections>
+                        <outlet property="snackbarsTableView" destination="wpL-V9-v8x" id="W6t-y1-aOB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAj-hi-yGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -763,7 +800,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plaats uw bestelling!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIS-JF-y72">
                                         <rect key="frame" x="210" y="8" width="180" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Is-v8-UTv">
@@ -806,7 +843,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dish" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53W-Le-5qt">
                                                             <rect key="frame" x="8" y="11" width="34" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creator" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lPM-oo-xbd">
