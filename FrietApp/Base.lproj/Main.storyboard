@@ -677,7 +677,43 @@
                     <view key="view" contentMode="scaleToFill" id="Kow-95-BT4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kies een snackbar in de buurt!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oz7-k3-vnq">
+                                <rect key="frame" x="166" y="28" width="269" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="4cc-IZ-ia3"/>
+                                    <constraint firstAttribute="width" constant="269" id="GE5-Wc-OkH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wpL-V9-v8x">
+                                <rect key="frame" x="71" y="63" width="472" height="517"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="snackbarCell" id="dQ5-Zb-8r2">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dQ5-Zb-8r2" id="rit-h8-EHF">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="OQa-Ph-Mpo" id="QRW-If-cDQ"/>
+                                    <outlet property="delegate" destination="OQa-Ph-Mpo" id="pVV-VD-9WT"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wpL-V9-v8x" firstAttribute="top" secondItem="Oz7-k3-vnq" secondAttribute="bottom" constant="8" symbolic="YES" id="66h-ht-9tL"/>
+                            <constraint firstItem="Oz7-k3-vnq" firstAttribute="centerX" secondItem="Kow-95-BT4" secondAttribute="centerX" id="NfQ-9h-W8H"/>
+                            <constraint firstAttribute="bottom" secondItem="wpL-V9-v8x" secondAttribute="bottom" constant="20" symbolic="YES" id="Xso-BW-hhp"/>
+                            <constraint firstItem="wpL-V9-v8x" firstAttribute="leading" secondItem="Kow-95-BT4" secondAttribute="leadingMargin" constant="55" id="e2j-tq-0K7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wpL-V9-v8x" secondAttribute="trailing" constant="41" id="eeL-7F-zkj"/>
+                            <constraint firstItem="Oz7-k3-vnq" firstAttribute="top" secondItem="Kow-95-BT4" secondAttribute="topMargin" constant="28" id="ra7-Io-uMo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sessie aanmaken" id="5kH-8y-Uhu"/>
                 </viewController>

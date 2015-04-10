@@ -650,7 +650,13 @@
                             <constraint firstItem="czf-Qp-tDy" firstAttribute="leading" secondItem="UCD-6v-0rR" secondAttribute="leading" id="nNw-3r-oWh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="wgH-Je-7mQ"/>
+                    <navigationItem key="navigationItem" title="Title" id="wgH-Je-7mQ">
+                        <barButtonItem key="rightBarButtonItem" image="AddIcon" id="oOf-NK-LTS">
+                            <connections>
+                                <segue destination="OQa-Ph-Mpo" kind="show" identifier="toAddOrder" id="hIW-Nx-6i0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="czf-Qp-tDy" id="Jgy-ew-edP"/>
                         <outlet property="titleBarTitle" destination="wgH-Je-7mQ" id="7nq-jw-9gq"/>
@@ -659,6 +665,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSb-cz-14E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1805" y="1153"/>
+        </scene>
+        <!--Sessie aanmaken-->
+        <scene sceneID="7ZK-ve-c0g">
+            <objects>
+                <viewController id="OQa-Ph-Mpo" customClass="MakeOrderController" customModule="FrietApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PUU-OQ-iVw"/>
+                        <viewControllerLayoutGuide type="bottom" id="1q1-WL-jds"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kow-95-BT4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZW7-u5-Rhb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lat-7g-Pj8">
+                                        <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                        <color key="color" red="1" green="0.66111077870000001" blue="0.02649066613" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="lat-7g-Pj8" secondAttribute="bottom" constant="282" id="5FI-zI-gNj"/>
+                                    <constraint firstItem="lat-7g-Pj8" firstAttribute="top" secondItem="ZW7-u5-Rhb" secondAttribute="top" constant="281" id="ML4-tv-ZJG"/>
+                                    <constraint firstItem="lat-7g-Pj8" firstAttribute="centerX" secondItem="ZW7-u5-Rhb" secondAttribute="centerX" id="lyX-gQ-J0g"/>
+                                    <constraint firstAttribute="trailing" secondItem="lat-7g-Pj8" secondAttribute="trailing" constant="281" id="qRU-eD-xLn"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ZW7-u5-Rhb" secondAttribute="trailing" id="28F-V0-5d8"/>
+                            <constraint firstItem="ZW7-u5-Rhb" firstAttribute="top" secondItem="Kow-95-BT4" secondAttribute="top" id="Pus-RG-jcL"/>
+                            <constraint firstItem="ZW7-u5-Rhb" firstAttribute="leading" secondItem="Kow-95-BT4" secondAttribute="leading" id="eMm-yY-C0I"/>
+                            <constraint firstItem="ZW7-u5-Rhb" firstAttribute="bottom" secondItem="1q1-WL-jds" secondAttribute="top" id="ghW-La-N25"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Sessie aanmaken" id="5kH-8y-Uhu"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="lat-7g-Pj8" id="FhA-g6-fu1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bAj-hi-yGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1805" y="1954"/>
         </scene>
         <!--Title-->
         <scene sceneID="Bfv-Q0-4en">
