@@ -149,7 +149,6 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
         var niceDate = dateFormatter.stringFromDate(date)
         self.dishes.append(Dish(_id: _id, order_id: order_id, creator: creator, date: date, dish: dish, niceDate: niceDate))
         self.dishesTableView.reloadData()
-        self.view.endEditing(true)
     }
     
     func afterGetDishes(){

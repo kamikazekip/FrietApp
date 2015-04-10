@@ -143,9 +143,5 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
             var cellOrder = sender as! OrderCell
             dishesController.receivedOrder = cellOrder.order
         }
-        if(segue.identifier == "toAddOrder"){
-            var makeOrderController = segue.destinationViewController as! MakeOrderController
-            makeOrderController.oldController = self
-        }
     }
 }

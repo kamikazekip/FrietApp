@@ -21,8 +21,6 @@
 		52D1CCC31AD7EDCB00032AF6 /* DishesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1CCC21AD7EDCB00032AF6 /* DishesController.swift */; };
 		52D1CCC51AD7F99100032AF6 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1CCC41AD7F99100032AF6 /* Dish.swift */; };
 		52D1CCC71AD7F9B200032AF6 /* DishCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1CCC61AD7F9B200032AF6 /* DishCell.swift */; };
-		52D1CCCB1AD816A900032AF6 /* MakeOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D1CCCA1AD816A900032AF6 /* MakeOrderController.swift */; };
-		52D1CCCD1AD81DA300032AF6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D1CCCC1AD81DA300032AF6 /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		52D6EE551AD5250700613D1A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE541AD5250700613D1A /* Group.swift */; };
 		52D6EE571AD52DEF00613D1A /* RegistrerenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */; };
 		52D6EE591AD55FCE00613D1A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE581AD55FCE00613D1A /* Order.swift */; };
@@ -60,8 +58,6 @@
 		52D1CCC21AD7EDCB00032AF6 /* DishesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishesController.swift; sourceTree = "<group>"; };
 		52D1CCC41AD7F99100032AF6 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		52D1CCC61AD7F9B200032AF6 /* DishCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishCell.swift; sourceTree = "<group>"; };
-		52D1CCCA1AD816A900032AF6 /* MakeOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeOrderController.swift; sourceTree = "<group>"; };
-		52D1CCCC1AD81DA300032AF6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		52D6EE541AD5250700613D1A /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		52D6EE561AD52DEF00613D1A /* RegistrerenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrerenController.swift; sourceTree = "<group>"; };
 		52D6EE581AD55FCE00613D1A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
@@ -75,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52D1CCCD1AD81DA300032AF6 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +87,6 @@
 		5253F0541AA8624E00C458E3 = {
 			isa = PBXGroup;
 			children = (
-				52D1CCCC1AD81DA300032AF6 /* CoreLocation.framework */,
 				5253F05F1AA8624E00C458E3 /* FrietApp */,
 				5253F0751AA8624E00C458E3 /* FrietAppTests */,
 				5253F05E1AA8624E00C458E3 /* Products */,
@@ -131,7 +125,6 @@
 				52D1CCC21AD7EDCB00032AF6 /* DishesController.swift */,
 				52D1CCC41AD7F99100032AF6 /* Dish.swift */,
 				52D1CCC61AD7F9B200032AF6 /* DishCell.swift */,
-				52D1CCCA1AD816A900032AF6 /* MakeOrderController.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -263,7 +256,6 @@
 			files = (
 				52D6EE5B1AD56EB900613D1A /* OrderCell.swift in Sources */,
 				52D1CCC71AD7F9B200032AF6 /* DishCell.swift in Sources */,
-				52D1CCCB1AD816A900032AF6 /* MakeOrderController.swift in Sources */,
 				52D6EE551AD5250700613D1A /* Group.swift in Sources */,
 				52411DD71AD67608002941CA /* SortByActiveCell.swift in Sources */,
 				52D1CCC31AD7EDCB00032AF6 /* DishesController.swift in Sources */,
