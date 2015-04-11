@@ -211,11 +211,17 @@
                                             <action selector="register:" destination="uhY-Kt-rOg" eventType="touchUpInside" id="kIm-mT-fCl"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Olh-Du-nwt">
+                                        <rect key="frame" x="282" y="288" width="37" height="37"/>
+                                        <color key="color" red="0.98431372549999996" green="0.62352941179999999" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstItem="Olh-Du-nwt" firstAttribute="centerX" secondItem="sMF-zn-xyN" secondAttribute="centerX" id="4g7-ee-kJt"/>
                                     <constraint firstItem="gvs-JI-e7X" firstAttribute="top" secondItem="bqe-fv-OzF" secondAttribute="bottom" constant="8" symbolic="YES" id="601-VX-TPM"/>
                                     <constraint firstItem="cf9-WM-7uZ" firstAttribute="leading" secondItem="PXq-3q-VHy" secondAttribute="leading" id="9gD-Fd-RCE"/>
+                                    <constraint firstItem="Olh-Du-nwt" firstAttribute="top" secondItem="sMF-zn-xyN" secondAttribute="bottom" constant="30" id="D5n-rP-inL"/>
                                     <constraint firstItem="sMF-zn-xyN" firstAttribute="top" secondItem="gvs-JI-e7X" secondAttribute="bottom" constant="15" id="FR5-4e-Xgj"/>
                                     <constraint firstItem="cf9-WM-7uZ" firstAttribute="leading" secondItem="1St-dp-JOU" secondAttribute="leadingMargin" id="FSu-um-dcL"/>
                                     <constraint firstItem="QqF-G1-Nwc" firstAttribute="trailing" secondItem="PXq-3q-VHy" secondAttribute="trailing" id="IVl-ix-MaY"/>
@@ -251,6 +257,7 @@
                     <navigationItem key="navigationItem" title="Registreren" id="81R-ol-yWL"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Olh-Du-nwt" id="TKb-zr-hdn"/>
                         <outlet property="passwordConfirmField" destination="gvs-JI-e7X" id="7W1-wN-Lq5"/>
                         <outlet property="passwordField" destination="QqF-G1-Nwc" id="7Pf-Nx-iF7"/>
                         <outlet property="usernameField" destination="PXq-3q-VHy" id="s4C-nu-o9J"/>
@@ -490,8 +497,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJR-dK-kgR">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dbq-kj-OaG"/>
+                                    <barButtonItem style="plain" id="ClO-sS-5UF">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d4t-bT-h1Q">
+                                            <rect key="frame" x="249" y="7" width="100" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="1" green="0.66111077870000001" blue="0.02649066613" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Instellingen">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="yZs-T1-CAR" kind="show" id="3KM-ZR-Mxx"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BaI-Az-099"/>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Fmw-Xe-sb4">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupCell" rowHeight="59" id="XTB-8d-gOm" customClass="GroupCell" customModule="FrietApp" customModuleProvider="target">
@@ -531,44 +566,16 @@
                                     <outlet property="delegate" destination="fdp-mo-3xx" id="K1b-iB-k8m"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJR-dK-kgR">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="dbq-kj-OaG"/>
-                                    <barButtonItem style="plain" id="ClO-sS-5UF">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="d4t-bT-h1Q">
-                                            <rect key="frame" x="249" y="7" width="100" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="0.66111077870000001" blue="0.02649066613" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="Instellingen">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="5"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <segue destination="yZs-T1-CAR" kind="show" id="3KM-ZR-Mxx"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BaI-Az-099"/>
-                                </items>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="trailing" secondItem="SJR-dK-kgR" secondAttribute="trailing" id="Iyg-F1-gl1"/>
-                            <constraint firstItem="SJR-dK-kgR" firstAttribute="leading" secondItem="e1c-PN-fVL" secondAttribute="leading" id="TAT-Nl-wrE"/>
-                            <constraint firstItem="SJR-dK-kgR" firstAttribute="bottom" secondItem="qb3-Gv-wxn" secondAttribute="top" id="W8T-Zo-jsZ"/>
-                            <constraint firstAttribute="trailing" secondItem="SJR-dK-kgR" secondAttribute="trailing" id="cuG-Oc-3Qx"/>
-                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="bottom" secondItem="SJR-dK-kgR" secondAttribute="top" id="jnZ-rp-KLP"/>
-                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="top" secondItem="e1c-PN-fVL" secondAttribute="top" id="pqu-Gj-dsH"/>
-                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="leading" secondItem="SJR-dK-kgR" secondAttribute="leading" id="vSn-Yq-uQm"/>
+                            <constraint firstItem="SJR-dK-kgR" firstAttribute="top" secondItem="Fmw-Xe-sb4" secondAttribute="bottom" id="79t-bF-ASd"/>
+                            <constraint firstItem="SJR-dK-kgR" firstAttribute="bottom" secondItem="qb3-Gv-wxn" secondAttribute="top" id="CmI-R3-0XV"/>
+                            <constraint firstAttribute="trailing" secondItem="Fmw-Xe-sb4" secondAttribute="trailing" id="MaH-CP-bMO"/>
+                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="top" secondItem="e1c-PN-fVL" secondAttribute="top" constant="64" id="Mld-jZ-wWy"/>
+                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="leading" secondItem="e1c-PN-fVL" secondAttribute="leading" id="WPe-HC-IBM"/>
+                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="trailing" secondItem="SJR-dK-kgR" secondAttribute="trailing" id="fyI-90-VkV"/>
+                            <constraint firstItem="Fmw-Xe-sb4" firstAttribute="leading" secondItem="SJR-dK-kgR" secondAttribute="leading" id="oOg-aw-lGv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Groepen" id="PCJ-oM-fCf">
@@ -788,6 +795,9 @@
                                                     <integer key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="finish:" destination="Gk4-ut-Jur" eventType="touchUpInside" id="Cps-MG-tVf"/>
+                                            </connections>
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ULE-kW-dLU"/>
@@ -812,7 +822,7 @@
                                         <rect key="frame" x="210" y="78" width="180" height="42"/>
                                         <color key="backgroundColor" red="1" green="0.66111077870000001" blue="0.02649066613" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="8K2-Hz-fK7"/>
+                                            <constraint firstAttribute="height" constant="42" id="sDF-PJ-J3D"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Plaatsen">
@@ -832,7 +842,7 @@
                                         <rect key="frame" x="8" y="128" width="584" height="402"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="402" id="z1I-dD-xfy"/>
+                                            <constraint firstAttribute="height" constant="402" id="ns2-kD-c71"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="dishCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="dishCell" id="eIA-ya-tKk" customClass="DishCell" customModule="FrietApp" customModuleProvider="target">
@@ -873,32 +883,32 @@
                                     </tableView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="top" secondItem="dd9-eH-r2F" secondAttribute="bottom" constant="8" symbolic="YES" id="1rz-cT-CHL"/>
-                                    <constraint firstItem="0Is-v8-UTv" firstAttribute="top" secondItem="nIS-JF-y72" secondAttribute="bottom" constant="8" id="2y4-Sb-3Dt"/>
-                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="trailing" secondItem="wBi-1p-kqf" secondAttribute="trailingMargin" id="3eM-ZS-vX9"/>
-                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="leading" secondItem="wBi-1p-kqf" secondAttribute="leadingMargin" id="Bww-pw-6s5"/>
-                                    <constraint firstItem="0Is-v8-UTv" firstAttribute="centerX" secondItem="wBi-1p-kqf" secondAttribute="centerX" id="FNe-UY-yFS"/>
-                                    <constraint firstItem="nIS-JF-y72" firstAttribute="top" secondItem="wBi-1p-kqf" secondAttribute="topMargin" id="So6-dX-q3q"/>
-                                    <constraint firstItem="dd9-eH-r2F" firstAttribute="leading" secondItem="nIS-JF-y72" secondAttribute="leading" id="XGp-NE-4HN"/>
-                                    <constraint firstAttribute="bottom" secondItem="jEt-DS-Py8" secondAttribute="bottom" id="bR0-Gh-a8X"/>
-                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="centerX" secondItem="dd9-eH-r2F" secondAttribute="centerX" id="dns-Wf-4Qg"/>
-                                    <constraint firstItem="dd9-eH-r2F" firstAttribute="trailing" secondItem="nIS-JF-y72" secondAttribute="trailing" id="fYF-T2-vzy"/>
-                                    <constraint firstItem="dd9-eH-r2F" firstAttribute="leading" secondItem="0Is-v8-UTv" secondAttribute="leading" id="gjf-ca-IcB"/>
-                                    <constraint firstItem="dd9-eH-r2F" firstAttribute="top" secondItem="0Is-v8-UTv" secondAttribute="bottom" constant="8" symbolic="YES" id="lkn-0y-91j"/>
-                                    <constraint firstItem="dd9-eH-r2F" firstAttribute="trailing" secondItem="0Is-v8-UTv" secondAttribute="trailing" id="sGF-aS-Erc"/>
+                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="leading" secondItem="wBi-1p-kqf" secondAttribute="leadingMargin" id="0A4-BK-fuZ"/>
+                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="centerX" secondItem="dd9-eH-r2F" secondAttribute="centerX" id="0n7-nr-QUM"/>
+                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="trailing" secondItem="wBi-1p-kqf" secondAttribute="trailingMargin" id="1AI-1H-8pc"/>
+                                    <constraint firstItem="0Is-v8-UTv" firstAttribute="trailing" secondItem="dd9-eH-r2F" secondAttribute="trailing" id="4GG-DJ-558"/>
+                                    <constraint firstItem="0Is-v8-UTv" firstAttribute="top" secondItem="nIS-JF-y72" secondAttribute="bottom" constant="8" symbolic="YES" id="8wF-0q-Osq"/>
+                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="centerX" secondItem="wBi-1p-kqf" secondAttribute="centerX" id="BRQ-3d-lFC"/>
+                                    <constraint firstItem="dd9-eH-r2F" firstAttribute="leading" secondItem="0Is-v8-UTv" secondAttribute="leading" id="BhL-Fd-LYN"/>
+                                    <constraint firstItem="jEt-DS-Py8" firstAttribute="top" secondItem="dd9-eH-r2F" secondAttribute="bottom" constant="8" symbolic="YES" id="DBB-js-KXb"/>
+                                    <constraint firstItem="nIS-JF-y72" firstAttribute="trailing" secondItem="0Is-v8-UTv" secondAttribute="trailing" id="HRJ-UI-vV8"/>
+                                    <constraint firstItem="dd9-eH-r2F" firstAttribute="top" secondItem="0Is-v8-UTv" secondAttribute="bottom" constant="8" symbolic="YES" id="Nzx-ZM-LHb"/>
+                                    <constraint firstItem="nIS-JF-y72" firstAttribute="leading" secondItem="0Is-v8-UTv" secondAttribute="leading" id="ReO-NU-nEU"/>
+                                    <constraint firstItem="nIS-JF-y72" firstAttribute="top" secondItem="wBi-1p-kqf" secondAttribute="topMargin" id="bCJ-Bn-dRA"/>
+                                    <constraint firstAttribute="bottom" secondItem="jEt-DS-Py8" secondAttribute="bottom" id="v9V-Q3-OLc"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="wBi-1p-kqf" firstAttribute="leading" secondItem="RM1-lx-waL" secondAttribute="leading" id="71m-VS-cGP"/>
-                            <constraint firstItem="wBi-1p-kqf" firstAttribute="trailing" secondItem="FOL-dh-SLO" secondAttribute="trailing" id="dJV-3K-OsF"/>
-                            <constraint firstItem="wBi-1p-kqf" firstAttribute="top" secondItem="T8c-Ch-4Mb" secondAttribute="bottom" id="iHX-Q2-hNg"/>
-                            <constraint firstAttribute="trailing" secondItem="FOL-dh-SLO" secondAttribute="trailing" id="lDs-pf-2c9"/>
-                            <constraint firstItem="FOL-dh-SLO" firstAttribute="bottom" secondItem="KAm-64-4d7" secondAttribute="top" id="qW0-kO-qwl"/>
-                            <constraint firstItem="FOL-dh-SLO" firstAttribute="top" secondItem="wBi-1p-kqf" secondAttribute="bottom" constant="6" id="w1J-2J-emq"/>
-                            <constraint firstItem="wBi-1p-kqf" firstAttribute="leading" secondItem="FOL-dh-SLO" secondAttribute="leading" id="zYQ-OH-0Ga"/>
+                            <constraint firstAttribute="trailing" secondItem="FOL-dh-SLO" secondAttribute="trailing" id="IGg-G9-Mkq"/>
+                            <constraint firstItem="wBi-1p-kqf" firstAttribute="top" secondItem="T8c-Ch-4Mb" secondAttribute="bottom" id="Nr7-lc-4t4"/>
+                            <constraint firstItem="FOL-dh-SLO" firstAttribute="leading" secondItem="wBi-1p-kqf" secondAttribute="leading" id="Pfv-YV-mSq"/>
+                            <constraint firstItem="wBi-1p-kqf" firstAttribute="trailing" secondItem="FOL-dh-SLO" secondAttribute="trailing" id="Vr4-fd-ikR"/>
+                            <constraint firstItem="FOL-dh-SLO" firstAttribute="top" secondItem="wBi-1p-kqf" secondAttribute="bottom" constant="6" id="XAs-Sr-QGS"/>
+                            <constraint firstItem="FOL-dh-SLO" firstAttribute="bottom" secondItem="KAm-64-4d7" secondAttribute="top" id="XsO-Yr-Pdf"/>
+                            <constraint firstItem="FOL-dh-SLO" firstAttribute="leading" secondItem="RM1-lx-waL" secondAttribute="leading" id="dmk-CC-cMG"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="wVZ-rx-OkB" appends="YES" id="VST-9S-puG"/>

@@ -24,6 +24,9 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
             let users = group["users"]! as! [String]
             self.groups.append(Group(_id: _id, creator: creator, name: name, orders: orders, users: users))
         }
+        var backgroundView = UIView(frame: CGRectZero)
+        self.groupTableView.tableFooterView = backgroundView
+        self.groupTableView.backgroundColor = UIColor.clearColor()
     }
     
     override func viewWillDisappear(animated : Bool) {

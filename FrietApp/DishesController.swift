@@ -20,12 +20,15 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
     var loaded: Bool! = false
     var lastOperation: String!
     var activityIndicator: UIActivityIndicatorView!
+    var oldController: OrderListController!
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if(!loaded){
+            dishesTableView.hidden = true
+            titleBar.title = "\(receivedOrder.niceDate)"
             startActivityIndicator()
         }
         
@@ -57,6 +60,18 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
         self.view.endEditing(true)
     }
     
+    @IBAction func finish(sender: UIButton) {
+        // create the request
+        let base64LoginString = defaults.valueForKey("authHeader") as! String
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://desolate-bayou-9128.herokuapp.com/orders/\(receivedOrder._id)")!)
+        request.HTTPMethod = "PUT"
+        request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
+        lastOperation = "finish"
+        startActivityIndicator()
+        let urlConnection = NSURLConnection(request: request, delegate: self)
+    }
+    
     @IBAction func place(sender: UIButton) {
         if(count(dishTextField.text) > 0){
             // create the request
@@ -68,6 +83,7 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
             request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
             lastOperation = "placeDish"
+            startActivityIndicator()
             let urlConnection = NSURLConnection(request: request, delegate: self)
         } else {
             var alert = UIAlertController(title: "Oeps!", message: "De bestelling moet ingevuld zijn!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -102,6 +118,8 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
                 afterGetDishes()
                 case "placeDish":
                 afterPlaceDish()
+                case "finish":
+                afterFinish()
             default:
                 println("Default case called in lastOperation switch")
             }
@@ -130,8 +148,6 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
         activityIndicator.color = UIColor(red: 251/255, green: 169/255, blue: 7/255, alpha: 1)
         activityIndicator.startAnimating()
         self.view.addSubview( activityIndicator )
-        dishesTableView.hidden = true
-        titleBar.title = "\(receivedOrder.niceDate)"
     }
     
     func afterPlaceDish(){
@@ -150,6 +166,7 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
         self.dishes.append(Dish(_id: _id, order_id: order_id, creator: creator, date: date, dish: dish, niceDate: niceDate))
         self.dishesTableView.reloadData()
         self.view.endEditing(true)
+        activityIndicator.removeFromSuperview()
     }
     
     func afterGetDishes(){
@@ -170,8 +187,17 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
             self.dishes.append(Dish(_id: _id, order_id: order_id, creator: creator, date: date, dish: dish, niceDate: niceDate))
             dishesTableView.reloadData()
         }
-        activityIndicator.hidden = true
+        activityIndicator.removeFromSuperview()
         dishesTableView.hidden = false
         dishesTableView.reloadData()
+    }
+    
+    func afterFinish(){
+        receivedOrder.active = false
+        oldController.tableView.reloadData()
+        activityIndicator.removeFromSuperview()
+        var alert = UIAlertController(title: "Gelukt!", message: "Deze bestelling is nu afgerond!", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }

@@ -23,6 +23,9 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var backgroundView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = backgroundView
+        self.tableView.backgroundColor = UIColor.clearColor()
         sortByActive = defaults.valueForKey("sortByActive") as? Bool
         if (sortByActive == nil ) {
             sortByActive = true
@@ -30,6 +33,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         if(!loaded){
             startActivityIndicator()
         }
+        
         
         let base64LoginString = defaults.valueForKey("authHeader") as! String
         
@@ -121,6 +125,9 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         if(active == true){
             cell.title.textColor = UIColor(red: 13/255, green: 212/255, blue: 0/255, alpha: 1)
             cell.creator.textColor = UIColor(red: 13/255, green: 212/255, blue: 0/255, alpha: 1)
+        } else {
+            cell.title.textColor = UIColor.blackColor()
+            cell.creator.textColor = UIColor.blackColor()
         }
         
         return cell
@@ -142,6 +149,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
             var dishesController = segue.destinationViewController as! DishesController
             var cellOrder = sender as! OrderCell
             dishesController.receivedOrder = cellOrder.order
+            dishesController.oldController = self
         }
         if(segue.identifier == "toAddOrder"){
             var makeOrderController = segue.destinationViewController as! MakeOrderController

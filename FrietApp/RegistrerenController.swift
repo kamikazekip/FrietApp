@@ -14,10 +14,10 @@ class RegistrerenController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordConfirmField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var data: NSMutableData = NSMutableData()
     var lastStatusCode = 1
     var groups: AnyObject!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class RegistrerenController: UIViewController {
         }
         else {
             self.view.endEditing(true)
-            
+            activityIndicator.hidden = false
             // create the request
             let request = NSMutableURLRequest(URL: NSURL(string: "https://desolate-bayou-9128.herokuapp.com/users")!)
             request.HTTPMethod = "POST"
@@ -61,6 +61,7 @@ class RegistrerenController: UIViewController {
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
                 data, response, error in
                 
+                self.activityIndicator.hidden = true
                 if error != nil {
                     println("error=\(error)")
                     return
