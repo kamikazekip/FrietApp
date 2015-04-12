@@ -242,4 +242,9 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func callSnackbar(sender: UIButton) {
+        var url:NSURL = NSURL(string: "tel://0000000")!
+        UIApplication.sharedApplication().openURL(url)
+    }
 }
