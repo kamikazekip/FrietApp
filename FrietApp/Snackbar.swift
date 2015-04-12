@@ -11,9 +11,11 @@ import Foundation
 class Snackbar {
     var name: String!
     var url: String!
+    var telephone: String!
     
-    init(name: String, url: String){
+    init(name: String, url: String, telephone: String){
         self.name = name
         self.url = url
+        self.telephone = telephone
     }
 }

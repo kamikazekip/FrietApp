@@ -244,7 +244,18 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
     }
     
     @IBAction func callSnackbar(sender: UIButton) {
-        var url:NSURL = NSURL(string: "tel://0000000")!
-        UIApplication.sharedApplication().openURL(url)
+        if(receivedOrder.snackbarName != "Overig" && receivedOrder.snackbarPhone != nil){
+            var phoneNumber = receivedOrder.snackbarPhone
+            var phone = phoneNumber.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+           
+            var phoneString = "tel://\(phone)"
+            var url:NSURL = NSURL(string: phoneString)!
+            UIApplication.sharedApplication().openURL(url)
+        }
+        else{
+            var alert = UIAlertController(title: "Sorry!", message: "Deze snackbar heeft geen telefoonnummer!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 }

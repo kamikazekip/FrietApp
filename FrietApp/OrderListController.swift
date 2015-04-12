@@ -106,10 +106,11 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
                 let date = dateFormatter.dateFromString(order["date"]! as! String)!
                 let snackbarName = order["snackbar"]!["snackbar"]! as! String
                 let snackbarUrl = order["snackbar"]!["url"]! as! String
+                let snackbarPhone = order["snackbar"]!["telephone"]! as! String
                 let dishes = order["dishes"]! as! [String]
                 dateFormatter.dateFormat = "dd-MM-yyyy"
                 var niceDate = dateFormatter.stringFromDate(date)
-                self.orders.append(Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, dishes: dishes, niceDate: niceDate))
+                self.orders.append(Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, snackbarPhone: snackbarPhone, dishes: dishes, niceDate: niceDate))
             }
             activityIndicator.hidden = true
             tableView.hidden = false

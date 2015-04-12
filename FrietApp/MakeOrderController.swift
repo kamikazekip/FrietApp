@@ -21,7 +21,7 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
     
     var lastStatusCode = 1
     var data: NSMutableData = NSMutableData()
-    var snackbars: [Snackbar]! = [Snackbar(name: "Overig", url: "Sorry, geen url")]
+    var snackbars: [Snackbar]! = [Snackbar(name: "Overig", url: "Sorry, geen url", telephone: "00000000")]
     
     // viewDidLoad
     override func viewDidLoad() {
@@ -96,10 +96,8 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
         cell.snackbarLabel.text = self.snackbars[indexPath.row].name
         if(self.snackbars[indexPath.row].name == "Overig"){
             cell.websiteButton.hidden = true
-            println("hidden: \(snackbars[indexPath.row].name)")
         } else {
             cell.websiteButton.hidden = false
-            println("revealed: \(snackbars[indexPath.row].name)")
         }
         if indexPath.row % 2 != 0 {
             cell.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -114,7 +112,7 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://desolate-bayou-9128.herokuapp.com/groups/\(receivedGroup._id)/order")!)
         request.HTTPMethod = "POST"
-        let postString = "snackbar=" + snackbars[indexPath.row].name + "&url=" + snackbars[indexPath.row].url
+        let postString = "snackbar=" + snackbars[indexPath.row].name + "&url=" + snackbars[indexPath.row].url + "&telephone=" + snackbars[indexPath.row].telephone
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         request.setValue(base64LoginString, forHTTPHeaderField: "Authorization")
         lastOperation = "postSnackbar"
@@ -127,8 +125,9 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
         for snackbar in receivedSnackbars {
             let name = snackbar["snackbar"]! as! String
             let url  = snackbar["url"]! as! String
+            let telephone = snackbar["telephone"]! as! String
             if(name != "Overig"){
-                snackbars.insert(Snackbar(name: name, url: url), atIndex: 0)
+                snackbars.insert(Snackbar(name: name, url: url, telephone: telephone), atIndex: 0)
             }
         }
         activityIndicator.removeFromSuperview()
@@ -147,10 +146,11 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
         let date = dateFormatter.dateFromString(order["date"]! as! String)!
         let snackbarName = order["snackbar"]!["snackbar"]! as! String
         let snackbarUrl = order["snackbar"]!["url"]! as! String
+        let snackbarPhone = order["snackbar"]!["telephone"]! as! String
         let dishes = order["dishes"]! as! [String]
         dateFormatter.dateFormat = "dd-MM-yyyy"
         var niceDate = dateFormatter.stringFromDate(date)
-        var newOrder = Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, dishes: dishes, niceDate: niceDate)
+        var newOrder = Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, snackbarPhone: snackbarPhone, dishes: dishes, niceDate: niceDate)
         finishUp(newOrder)
     }
     
