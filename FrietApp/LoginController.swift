@@ -29,9 +29,12 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        usernameField.text = "admin"
-        passwordField.text = "admin"
         self.navigationItem.title = "Inloggen"
+        if(count(usernameField.text) == 0){
+            usernameField.becomeFirstResponder()
+        } else {
+            passwordField.becomeFirstResponder()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -117,7 +120,12 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
         if(segue.identifier == "toGroups"){
             self.navigationItem.title = "Uitloggen"
             var groupController = segue.destinationViewController as! GroupController
-            groupController.receivedGroups = groups;
+            groupController.receivedGroups = groups
+            groupController.oldController = self
+        }
+        if(segue.identifier == "toRegister"){
+            var registrerenController = segue.destinationViewController as! RegistrerenController
+            registrerenController.oldController = self
         }
     }
 }

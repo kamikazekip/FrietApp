@@ -20,6 +20,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     var sortByActive: Bool?
     let defaults = NSUserDefaults.standardUserDefaults()
     var loaded: Bool! = false
+    var selectedIndex: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +62,13 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     
     override func viewWillDisappear(animated: Bool) {
         activityIndicator.removeFromSuperview()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if(selectedIndex != nil){
+            tableView.deselectRowAtIndexPath(selectedIndex!, animated: true)
+        }
     }
     
     
@@ -113,6 +121,10 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return orders.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

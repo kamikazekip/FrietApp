@@ -31,6 +31,10 @@ class AddUserController: UIViewController, NSURLConnectionDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onTapMainView(sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func addUser(sender: UIButton) {
         if(count(userTextField.text) == 0){
             var alert = UIAlertController(title: "Oeps!", message: "Gebruiker mag niet leeg zijn!", preferredStyle: UIAlertControllerStyle.Alert)

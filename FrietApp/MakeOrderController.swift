@@ -96,6 +96,10 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
         cell.snackbarLabel.text = self.snackbars[indexPath.row].name
         if(self.snackbars[indexPath.row].name == "Overig"){
             cell.websiteButton.hidden = true
+            println("hidden: \(snackbars[indexPath.row].name)")
+        } else {
+            cell.websiteButton.hidden = false
+            println("revealed: \(snackbars[indexPath.row].name)")
         }
         if indexPath.row % 2 != 0 {
             cell.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)

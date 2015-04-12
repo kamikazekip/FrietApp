@@ -17,7 +17,7 @@ class RegistrerenController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var data: NSMutableData = NSMutableData()
     var lastStatusCode = 1
-    var groups: AnyObject!
+    var oldController: LoginController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class RegistrerenController: UIViewController {
                 // Create the actions
                 var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
                     UIAlertAction in
-                    self.goToLogin()
+                    self.goToLogin(username)
                 }
                 
                 // Add the actions
@@ -87,7 +87,9 @@ class RegistrerenController: UIViewController {
             task.resume()
         }
     }
-    func goToLogin(){
+    func goToLogin(username: String!){
+        oldController.usernameField.text = username
+        oldController.passwordField.text = ""
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
 }

@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var dishTextField: UITextField!
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var dishesTableView: UITableView!
+    var noOrdersLabel: UILabel?
     var receivedOrder: Order!
     var dishes: [Dish]! = []
     var lastStatusCode = 1
@@ -49,6 +52,13 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
             let urlConnection = NSURLConnection(request: request, delegate: self)
         }
         loaded = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if(receivedOrder.snackbarName != "Overig"){
+            dishTextField.placeholder = receivedOrder.snackbarName
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -150,7 +160,25 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
         self.view.addSubview( activityIndicator )
     }
     
+    func noOrdersYet(){
+        noOrdersLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        noOrdersLabel!.frame = self.scrollView.frame
+        noOrdersLabel!.center = self.scrollView.center
+        noOrdersLabel!.textAlignment = NSTextAlignment.Center
+        noOrdersLabel!.text = "Nog geen bestellingen!"
+        noOrdersLabel!.textColor = UIColor.blackColor()
+
+        self.scrollView.addSubview(noOrdersLabel!)
+    }
+    
     func afterPlaceDish(){
+        var vibrate = true
+        if(defaults.valueForKey("vibrate") != nil){
+            vibrate = defaults.valueForKey("vibrate") as! Bool
+        }
+        if(vibrate == true){
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        }
         dishTextField.text = ""
         let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [String: AnyObject]!
         let receivedDish = json["dish"] as! [String: AnyObject]!
@@ -167,6 +195,7 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
         self.dishesTableView.reloadData()
         self.view.endEditing(true)
         activityIndicator.removeFromSuperview()
+        decideToShowTableViewOrNot()
     }
     
     func afterGetDishes(){
@@ -188,8 +217,21 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
             dishesTableView.reloadData()
         }
         activityIndicator.removeFromSuperview()
-        dishesTableView.hidden = false
-        dishesTableView.reloadData()
+        decideToShowTableViewOrNot()
+    }
+    
+    func decideToShowTableViewOrNot(){
+        if(dishes.count == 0 && noOrdersLabel == nil){
+            noOrdersYet()
+        }
+        else if (dishes.count != 0 && noOrdersLabel != nil){
+            noOrdersLabel?.removeFromSuperview()
+            dishesTableView.hidden = false
+            dishesTableView.reloadData()
+        } else {
+            dishesTableView.hidden = false
+            dishesTableView.reloadData()
+        }
     }
     
     func afterFinish(){

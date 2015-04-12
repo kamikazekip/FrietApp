@@ -12,7 +12,10 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
 
     @IBOutlet weak var groupTableView: UITableView!
     var receivedGroups: [[String: AnyObject]]!
+    var oldController: LoginController!
     var groups: [Group]! = []
+    var defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var selectedIndex: NSIndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,17 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewWillDisappear(animated)
         
         if (self.isMovingFromParentViewController() == true){
-            //Functie voor uitloggen, wordt uitgevoerd op het moment dat een persoon uitlogt
+            oldController.usernameField.text = ""
+            oldController.passwordField.text = ""
+            defaults.setValue("", forKey: "authHeader")
+            defaults.synchronize()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        if(selectedIndex != nil){
+            groupTableView.deselectRowAtIndexPath(selectedIndex!, animated: true)
         }
     }
     
@@ -47,6 +60,10 @@ class GroupController: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedIndex = indexPath
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -21,7 +21,6 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         sortByActive = defaults.valueForKey("sortByActive") as? Bool
-        println(sortByActive)
         vibrate = defaults.valueForKey("vibrate") as? Bool
         if (sortByActive == nil ) {
             defaults.setValue(true, forKey: "sortByActive")
@@ -31,8 +30,6 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
             defaults.setValue(true, forKey: "vibrate")
             vibrate = true
         }
-        println(sortByActive)
-        
         defaults.synchronize()
     }
 
