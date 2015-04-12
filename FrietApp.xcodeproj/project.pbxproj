@@ -30,6 +30,7 @@
 		52D6EE5B1AD56EB900613D1A /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6EE5A1AD56EB900613D1A /* OrderCell.swift */; };
 		CE3771D81AD5C810002E295B /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3771D71AD5C810002E295B /* SettingsController.swift */; };
 		CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE652E091AD477E5008FF7B1 /* GroupCell.swift */; };
+		CED647B21ADA824400E9AA4C /* AddUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED647B11ADA824400E9AA4C /* AddUserController.swift */; };
 		CEF4EB6B1AD85864009C8F04 /* SnackbarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF4EB6A1AD85864009C8F04 /* SnackbarCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		52D6EE5A1AD56EB900613D1A /* OrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		CE3771D71AD5C810002E295B /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		CE652E091AD477E5008FF7B1 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		CED647B11ADA824400E9AA4C /* AddUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddUserController.swift; sourceTree = "<group>"; };
 		CEF4EB6A1AD85864009C8F04 /* SnackbarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnackbarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 				52D1CCCA1AD816A900032AF6 /* MakeOrderController.swift */,
 				52D1CCCE1AD8266800032AF6 /* Snackbar.swift */,
 				CEF4EB6A1AD85864009C8F04 /* SnackbarCell.swift */,
+				CED647B11ADA824400E9AA4C /* AddUserController.swift */,
 			);
 			path = FrietApp;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				52D6EE571AD52DEF00613D1A /* RegistrerenController.swift in Sources */,
 				CE652E0A1AD477E5008FF7B1 /* GroupCell.swift in Sources */,
 				521890C41ABC431700E79E42 /* NewGroupController.swift in Sources */,
+				CED647B21ADA824400E9AA4C /* AddUserController.swift in Sources */,
 				5253F0631AA8624E00C458E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

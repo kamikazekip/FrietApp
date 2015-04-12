@@ -156,5 +156,9 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
             makeOrderController.oldController = self
             makeOrderController.receivedGroup = self.receivedGroup
         }
+        if(segue.identifier == "toAddUser"){
+            var addUserController = segue.destinationViewController as! AddUserController
+            addUserController.receivedGroup = self.receivedGroup
+        }
     }
 }
