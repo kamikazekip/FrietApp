@@ -36,6 +36,12 @@ class NewGroupController: UIViewController, NSURLConnectionDelegate {
         let groupName = groupNameField.text
         if(count(groupName) > 2){
             postGroup(groupName)
+        } else {
+            var alert = UIAlertController(title: "Oeps!", message: "De groepsnaam moet 3 of meer karakters bevatten!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            activityIndicator.hidden = true
+            createButton.enabled = true
         }
     }
     

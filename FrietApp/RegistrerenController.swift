@@ -38,17 +38,22 @@ class RegistrerenController: UIViewController {
         var confirm = passwordConfirmField.text
         if(username.isEmpty || password.isEmpty || confirm.isEmpty){
             var alert = UIAlertController(title: "Oeps!", message: "Alle velden moeten ingevuld zijn!", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Sluiten", style: UIAlertActionStyle.Destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             passwordField.text = ""
             passwordConfirmField.text = ""
         }
         else if(password != confirm){
             var alert = UIAlertController(title: "Oeps!", message: "Het bevestig wachtwoord komt niet overeen met het wachtwoord!", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Sluiten", style: UIAlertActionStyle.Destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             passwordField.text = ""
             passwordConfirmField.text = ""
+        }
+        else if(count(password) < 3 || count(username) < 3){
+            var alert = UIAlertController(title: "Oeps!", message: "Gebruikersnaam en wachtwoord moeten beide 3 of meer karakters bevatten!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         else {
             self.view.endEditing(true)

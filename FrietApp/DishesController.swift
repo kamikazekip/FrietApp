@@ -244,7 +244,7 @@ class DishesController: UIViewController, NSURLConnectionDelegate, UITableViewDa
     }
     
     @IBAction func callSnackbar(sender: UIButton) {
-        if(receivedOrder.snackbarName != "Overig" && receivedOrder.snackbarPhone != nil){
+        if(receivedOrder.snackbarName != "Overig" && receivedOrder.snackbarPhone != nil && receivedOrder.snackbarPhone != "0"){
             var phoneNumber = receivedOrder.snackbarPhone
             var phone = phoneNumber.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
            

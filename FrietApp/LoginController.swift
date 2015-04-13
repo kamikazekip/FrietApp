@@ -47,25 +47,31 @@ class LoginController: UIViewController, NSURLConnectionDelegate {
     }
     
     @IBAction func inloggen(sender: UIButton) {
-        loginButton.enabled = false
-        registerButton.enabled = false
-        activityIndicator.hidden = false
         let username = usernameField.text
         let password = passwordField.text
-        let loginString = NSString(format: "%@:%@", username, password)
-        let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
-        myAuthorizationHeader = "Basic " + loginData.base64EncodedStringWithOptions(nil)
-        
-        // create the request
-        let url = NSURL(string: "https://desolate-bayou-9128.herokuapp.com/login")
-        let request = NSMutableURLRequest(URL: url!)
-        request.HTTPMethod = "POST"
-        request.setValue(myAuthorizationHeader, forHTTPHeaderField: "Authorization")
-        
-        
-        // fire off the request
-        // make sure your class conforms to NSURLConnectionDelegate
-        let urlConnection = NSURLConnection(request: request, delegate: self)
+        if(username != "" && password != ""){
+            loginButton.enabled = false
+            registerButton.enabled = false
+            activityIndicator.hidden = false
+            let loginString = NSString(format: "%@:%@", username, password)
+            let loginData: NSData = loginString.dataUsingEncoding(NSUTF8StringEncoding)!
+            myAuthorizationHeader = "Basic " + loginData.base64EncodedStringWithOptions(nil)
+            
+            // create the request
+            let url = NSURL(string: "https://desolate-bayou-9128.herokuapp.com/login")
+            let request = NSMutableURLRequest(URL: url!)
+            request.HTTPMethod = "POST"
+            request.setValue(myAuthorizationHeader, forHTTPHeaderField: "Authorization")
+            
+            
+            // fire off the request
+            // make sure your class conforms to NSURLConnectionDelegate
+            let urlConnection = NSURLConnection(request: request, delegate: self)
+        } else {
+            var alert = UIAlertController(title: "Oeps!", message: "Gebruikersnaam en wachtwoord moeten beide ingevuld zijn!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     //NSURLConnection delegate method

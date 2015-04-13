@@ -21,6 +21,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
     let defaults = NSUserDefaults.standardUserDefaults()
     var loaded: Bool! = false
     var selectedIndex: NSIndexPath?
+    var noOrdersLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,8 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         // make sure your class conforms to NSURLConnectionDelegate
         if(!loaded){
             let urlConnection = NSURLConnection(request: request, delegate: self)
+        } else {
+            decideToShowTableViewOrNot()
         }
         loaded = true
     }
@@ -113,8 +116,7 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
                 self.orders.append(Order(_id: _id, active: active, group_id: group_id, date: date, creator: creator, snackbarName: snackbarName, snackbarUrl: snackbarUrl, snackbarPhone: snackbarPhone, dishes: dishes, niceDate: niceDate))
             }
             activityIndicator.hidden = true
-            tableView.hidden = false
-            tableView.reloadData()
+            decideToShowTableViewOrNot()
         } else {
             println("Something went wrong, statusCode wasn't 200")
         }
@@ -155,6 +157,31 @@ class OrderListController: UIViewController, NSURLConnectionDelegate, UITableVie
         self.view.addSubview( activityIndicator )
         tableView.hidden = true
         titleBarTitle.title = "\(receivedGroup.name)"
+    }
+    
+    func noOrdersYet(){
+        noOrdersLabel = UILabel(frame: CGRectMake(0, 0, 200, 21))
+        noOrdersLabel!.frame = self.view.frame
+        noOrdersLabel!.center = self.view.center
+        noOrdersLabel!.textAlignment = NSTextAlignment.Center
+        noOrdersLabel!.text = "Nog geen sessies!"
+        noOrdersLabel!.textColor = UIColor.blackColor()
+        
+        self.view.addSubview(noOrdersLabel!)
+    }
+    
+    func decideToShowTableViewOrNot(){
+        if(orders.count == 0 && noOrdersLabel == nil){
+            noOrdersYet()
+        }
+        else if (orders.count != 0 && noOrdersLabel != nil){
+            noOrdersLabel?.removeFromSuperview()
+            tableView.hidden = false
+            tableView.reloadData()
+        } else {
+            tableView.hidden = false
+            tableView.reloadData()
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

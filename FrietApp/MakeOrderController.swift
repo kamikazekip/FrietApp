@@ -21,7 +21,7 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
     
     var lastStatusCode = 1
     var data: NSMutableData = NSMutableData()
-    var snackbars: [Snackbar]! = [Snackbar(name: "Overig", url: "Sorry, geen url", telephone: "00000000")]
+    var snackbars: [Snackbar]! = [Snackbar(name: "Overig", url: "Sorry, geen url", telephone: "0")]
     
     // viewDidLoad
     override func viewDidLoad() {
@@ -125,9 +125,14 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
         for snackbar in receivedSnackbars {
             let name = snackbar["snackbar"]! as! String
             let url  = snackbar["url"]! as! String
-            let telephone = snackbar["telephone"]! as! String
+            var telephone: String?
+            if let somePhone = snackbar["telephone"]! as? String{
+                telephone = snackbar["telephone"]! as? String
+            } else {
+                telephone = "0"
+            }
             if(name != "Overig"){
-                snackbars.insert(Snackbar(name: name, url: url, telephone: telephone), atIndex: 0)
+                snackbars.insert(Snackbar(name: name, url: url, telephone: telephone!), atIndex: 0)
             }
         }
         activityIndicator.removeFromSuperview()
@@ -157,6 +162,7 @@ class MakeOrderController: UIViewController, NSURLConnectionDelegate, CLLocation
     func finishUp(order: Order){
         self.oldController.orders.insert(order, atIndex: 0)
         self.oldController.tableView.reloadData()
+        self.oldController.decideToShowTableViewOrNot()
         self.navigationController?.popViewControllerAnimated(true)
     }
     
