@@ -57,7 +57,7 @@ class RegistrerenController: UIViewController {
         }
         else {
             self.view.endEditing(true)
-            activityIndicator.hidden = false
+            self.activityIndicator.startAnimating()
             // create the request
             let request = NSMutableURLRequest(URL: NSURL(string: "https://desolate-bayou-9128.herokuapp.com/users")!)
             request.HTTPMethod = "POST"
@@ -65,29 +65,47 @@ class RegistrerenController: UIViewController {
             request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
                 data, response, error in
-                
-                self.activityIndicator.hidden = true
+                self.activityIndicator.stopAnimating()
                 if error != nil {
                     println("error=\(error)")
                     return
                 }
                 
                 let responseString = NSString(data: data, encoding: NSUTF8StringEncoding)
-                
-                // Create the alert controller
-                var alertController = UIAlertController(title: "Registreren gelukt!", message: "\(username), je bent een held!", preferredStyle: .Alert)
-                
-                // Create the actions
-                var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
-                    UIAlertAction in
-                    self.goToLogin(username)
+                let json: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! [String: AnyObject]!
+                let responseJSON = json as! [String: AnyObject]!
+                let isSuccessfull = responseJSON["isSuccessfull"] as! Bool
+                if(isSuccessfull == true){
+                    // Create the alert controller
+                    var alertController = UIAlertController(title: "Registreren gelukt!", message: "\(username), je bent een held!", preferredStyle: .Alert)
+                    
+                    // Create the actions
+                    var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) {
+                        UIAlertAction in
+                        self.goToLogin(username)
+                    }
+                    
+                    // Add the actions
+                    alertController.addAction(okAction)
+                    
+                    // Present the controller
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                } else {
+                    // Create the alert controller
+                    var alertController = UIAlertController(title: "Oeps!", message: "Deze gebruikersnaam is al in gebruik!", preferredStyle: .Alert)
+                    
+                    // Create the actions
+                    var okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Destructive) {
+                        UIAlertAction in
+                        self.resetView()
+                    }
+                    
+                    // Add the actions
+                    alertController.addAction(okAction)
+                    
+                    // Present the controller
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
-                
-                // Add the actions
-                alertController.addAction(okAction)
-                
-                // Present the controller
-                self.presentViewController(alertController, animated: true, completion: nil)
             }
             task.resume()
         }
@@ -96,5 +114,9 @@ class RegistrerenController: UIViewController {
         oldController.usernameField.text = username
         oldController.passwordField.text = ""
         self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func resetView(){
+        usernameField.text = ""
     }
 }
